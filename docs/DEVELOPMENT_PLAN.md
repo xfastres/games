@@ -67,8 +67,8 @@
 
 记录日期：2026-10-13。引擎：Godot 4.7.2.stable.official.ed1daf0bf。
 
-- 工作区：`F:\xufeng\games`。开始时只有 `AGENTS.md`。
-- 不是 Git 仓库。本阶段没有创建仓库，也没有提交。
+- 工作区：`F:\xufeng\games`。开始时只有 `AGENTS.md`，也不是 Git 仓库。
+- 阶段 0 结束时已有提交 `first commit`（作者 xufeng，2026-10-13 16:57）。这次提交不是阶段任务里主动创建的。
 - 系统里原来没有 Godot。编辑器下载在本机 `%LOCALAPPDATA%\Godot\4.7.2-stable\`，不放进仓库。使用标准版，不是 .NET 版。
 
 下面三条是分开的结果：

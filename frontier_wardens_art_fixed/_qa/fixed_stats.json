@@ -1,0 +1,590 @@
+[
+  {
+    "path": "buildings/castle.png",
+    "canvas": [
+      148,
+      138
+    ],
+    "visible_px": 12566,
+    "content_bbox": [
+      2,
+      2,
+      146,
+      136
+    ]
+  },
+  {
+    "path": "buildings/wooden_palisade.png",
+    "canvas": [
+      96,
+      98
+    ],
+    "visible_px": 4621,
+    "content_bbox": [
+      2,
+      2,
+      94,
+      96
+    ]
+  },
+  {
+    "path": "buildings/stone_wall.png",
+    "canvas": [
+      103,
+      101
+    ],
+    "visible_px": 5699,
+    "content_bbox": [
+      2,
+      2,
+      101,
+      99
+    ]
+  },
+  {
+    "path": "buildings/archer_tower.png",
+    "canvas": [
+      74,
+      138
+    ],
+    "visible_px": 5594,
+    "content_bbox": [
+      2,
+      2,
+      72,
+      136
+    ]
+  },
+  {
+    "path": "buildings/lookout_tower.png",
+    "canvas": [
+      72,
+      146
+    ],
+    "visible_px": 5844,
+    "content_bbox": [
+      2,
+      2,
+      70,
+      144
+    ]
+  },
+  {
+    "path": "buildings/farm.png",
+    "canvas": [
+      122,
+      125
+    ],
+    "visible_px": 8069,
+    "content_bbox": [
+      2,
+      2,
+      120,
+      123
+    ]
+  },
+  {
+    "path": "buildings/lumber_camp.png",
+    "canvas": [
+      122,
+      112
+    ],
+    "visible_px": 7469,
+    "content_bbox": [
+      2,
+      2,
+      120,
+      110
+    ]
+  },
+  {
+    "path": "buildings/house.png",
+    "canvas": [
+      106,
+      107
+    ],
+    "visible_px": 6320,
+    "content_bbox": [
+      2,
+      2,
+      104,
+      105
+    ]
+  },
+  {
+    "path": "buildings/workshop.png",
+    "canvas": [
+      85,
+      103
+    ],
+    "visible_px": 5043,
+    "content_bbox": [
+      2,
+      2,
+      83,
+      101
+    ]
+  },
+  {
+    "path": "terrain/dirt_tile.png",
+    "canvas": [
+      87,
+      65
+    ],
+    "visible_px": 2879,
+    "content_bbox": [
+      2,
+      2,
+      85,
+      63
+    ]
+  },
+  {
+    "path": "terrain/stone_tile.png",
+    "canvas": [
+      113,
+      81
+    ],
+    "visible_px": 4314,
+    "content_bbox": [
+      2,
+      2,
+      111,
+      79
+    ]
+  },
+  {
+    "path": "terrain/road_straight.png",
+    "canvas": [
+      125,
+      90
+    ],
+    "visible_px": 5218,
+    "content_bbox": [
+      2,
+      2,
+      123,
+      88
+    ]
+  },
+  {
+    "path": "terrain/road_corner.png",
+    "canvas": [
+      117,
+      87
+    ],
+    "visible_px": 5031,
+    "content_bbox": [
+      2,
+      2,
+      115,
+      85
+    ]
+  },
+  {
+    "path": "terrain/road_t_junction.png",
+    "canvas": [
+      111,
+      85
+    ],
+    "visible_px": 4667,
+    "content_bbox": [
+      2,
+      2,
+      109,
+      83
+    ]
+  },
+  {
+    "path": "terrain/road_crossroad.png",
+    "canvas": [
+      114,
+      91
+    ],
+    "visible_px": 5476,
+    "content_bbox": [
+      2,
+      2,
+      112,
+      89
+    ]
+  },
+  {
+    "path": "terrain/pine_tree.png",
+    "canvas": [
+      99,
+      94
+    ],
+    "visible_px": 4743,
+    "content_bbox": [
+      2,
+      2,
+      97,
+      92
+    ]
+  },
+  {
+    "path": "terrain/deciduous_tree.png",
+    "canvas": [
+      67,
+      92
+    ],
+    "visible_px": 3238,
+    "content_bbox": [
+      2,
+      2,
+      65,
+      90
+    ]
+  },
+  {
+    "path": "terrain/grass_tile_01.png",
+    "canvas": [
+      81,
+      66
+    ],
+    "visible_px": 2705,
+    "content_bbox": [
+      2,
+      2,
+      79,
+      64
+    ]
+  },
+  {
+    "path": "terrain/grass_tile_02.png",
+    "canvas": [
+      99,
+      76
+    ],
+    "visible_px": 3966,
+    "content_bbox": [
+      2,
+      2,
+      97,
+      74
+    ]
+  },
+  {
+    "path": "terrain/grass_tile_03.png",
+    "canvas": [
+      97,
+      70
+    ],
+    "visible_px": 3563,
+    "content_bbox": [
+      2,
+      2,
+      95,
+      68
+    ]
+  },
+  {
+    "path": "terrain/grass_tile_04.png",
+    "canvas": [
+      99,
+      69
+    ],
+    "visible_px": 3690,
+    "content_bbox": [
+      2,
+      2,
+      97,
+      67
+    ]
+  },
+  {
+    "path": "terrain/rock_cluster.png",
+    "canvas": [
+      60,
+      64
+    ],
+    "visible_px": 2310,
+    "content_bbox": [
+      2,
+      2,
+      58,
+      62
+    ]
+  },
+  {
+    "path": "terrain/bush.png",
+    "canvas": [
+      43,
+      42
+    ],
+    "visible_px": 925,
+    "content_bbox": [
+      2,
+      2,
+      41,
+      40
+    ]
+  },
+  {
+    "path": "terrain/dead_tree.png",
+    "canvas": [
+      49,
+      80
+    ],
+    "visible_px": 1407,
+    "content_bbox": [
+      2,
+      2,
+      47,
+      78
+    ]
+  },
+  {
+    "path": "projectiles/arrow.png",
+    "canvas": [
+      63,
+      55
+    ],
+    "visible_px": 478,
+    "content_bbox": [
+      2,
+      2,
+      61,
+      53
+    ]
+  },
+  {
+    "path": "projectiles/large_arrow.png",
+    "canvas": [
+      78,
+      68
+    ],
+    "visible_px": 925,
+    "content_bbox": [
+      2,
+      2,
+      76,
+      66
+    ]
+  },
+  {
+    "path": "projectiles/fireball.png",
+    "canvas": [
+      53,
+      42
+    ],
+    "visible_px": 1185,
+    "content_bbox": [
+      2,
+      2,
+      51,
+      40
+    ]
+  },
+  {
+    "path": "projectiles/magic_bolt.png",
+    "canvas": [
+      68,
+      45
+    ],
+    "visible_px": 1877,
+    "content_bbox": [
+      2,
+      2,
+      66,
+      43
+    ]
+  },
+  {
+    "path": "effects/impact_spark.png",
+    "canvas": [
+      38,
+      36
+    ],
+    "visible_px": 794,
+    "content_bbox": [
+      2,
+      2,
+      36,
+      34
+    ]
+  },
+  {
+    "path": "effects/dust_cloud.png",
+    "canvas": [
+      41,
+      43
+    ],
+    "visible_px": 975,
+    "content_bbox": [
+      2,
+      2,
+      39,
+      41
+    ]
+  },
+  {
+    "path": "effects/green_death_effect.png",
+    "canvas": [
+      39,
+      45
+    ],
+    "visible_px": 229,
+    "content_bbox": [
+      2,
+      2,
+      37,
+      43
+    ]
+  },
+  {
+    "path": "effects/explosion.png",
+    "canvas": [
+      79,
+      73
+    ],
+    "visible_px": 3526,
+    "content_bbox": [
+      2,
+      2,
+      77,
+      71
+    ]
+  },
+  {
+    "path": "ui/icons/gold.png",
+    "canvas": [
+      37,
+      38
+    ],
+    "visible_px": 882,
+    "content_bbox": [
+      2,
+      2,
+      35,
+      36
+    ]
+  },
+  {
+    "path": "ui/icons/wood.png",
+    "canvas": [
+      35,
+      38
+    ],
+    "visible_px": 698,
+    "content_bbox": [
+      2,
+      2,
+      33,
+      36
+    ]
+  },
+  {
+    "path": "ui/icons/stone.png",
+    "canvas": [
+      36,
+      39
+    ],
+    "visible_px": 815,
+    "content_bbox": [
+      2,
+      2,
+      34,
+      37
+    ]
+  },
+  {
+    "path": "ui/icons/food.png",
+    "canvas": [
+      35,
+      41
+    ],
+    "visible_px": 577,
+    "content_bbox": [
+      2,
+      2,
+      33,
+      39
+    ]
+  },
+  {
+    "path": "ui/icons/health.png",
+    "canvas": [
+      37,
+      36
+    ],
+    "visible_px": 740,
+    "content_bbox": [
+      2,
+      2,
+      35,
+      34
+    ]
+  },
+  {
+    "path": "ui/icons/shield.png",
+    "canvas": [
+      35,
+      40
+    ],
+    "visible_px": 824,
+    "content_bbox": [
+      2,
+      2,
+      33,
+      38
+    ]
+  },
+  {
+    "path": "ui/icons/sword.png",
+    "canvas": [
+      35,
+      39
+    ],
+    "visible_px": 403,
+    "content_bbox": [
+      2,
+      2,
+      33,
+      37
+    ]
+  },
+  {
+    "path": "ui/icons/upgrade.png",
+    "canvas": [
+      40,
+      41
+    ],
+    "visible_px": 863,
+    "content_bbox": [
+      2,
+      2,
+      38,
+      39
+    ]
+  },
+  {
+    "path": "ui/icons/quest.png",
+    "canvas": [
+      36,
+      40
+    ],
+    "visible_px": 898,
+    "content_bbox": [
+      2,
+      2,
+      34,
+      38
+    ]
+  },
+  {
+    "path": "ui/icons/potion.png",
+    "canvas": [
+      28,
+      41
+    ],
+    "visible_px": 605,
+    "content_bbox": [
+      2,
+      2,
+      26,
+      39
+    ]
+  }
+]

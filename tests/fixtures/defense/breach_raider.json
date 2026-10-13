@@ -1,0 +1,11 @@
+{
+  "id": "base.breach_raider",
+  "schema_version": 1,
+  "name": "攻墙敌人",
+  "scene": "res://scenes/combat/enemy_unit.tscn",
+  "max_health": 100,
+  "move_speed": 220,
+  "contact_damage": 25,
+  "attack_interval": 0.2,
+  "gold_reward": 1
+}

@@ -1,0 +1,728 @@
+{
+  "schema_version": 1,
+  "project": "Frontier Wardens",
+  "engine": "Godot 4",
+  "notes": [
+    "Fixed revision: failed crops rebuilt from source atlas via GrabCut; existing good PNGs conservatively cleaned and re-trimmed.",
+    "This is an AI-generated prototype asset pack, not a fully production-validated art set.",
+    "Transparent masks are automated estimates; inspect edge halos and residual background before shipping.",
+    "Spritesheet animation frames in the source atlas are not exported as verified frame sequences.",
+    "Asset sizes are normalized only by cropping; in-game scale and anchors must be set in Godot."
+  ],
+  "assets": [
+    {
+      "id": "castle",
+      "path": "buildings/castle.png",
+      "type": "buildings",
+      "source_bbox": [
+        0,
+        65,
+        180,
+        260
+      ],
+      "actual_size_px": [
+        148,
+        138
+      ],
+      "format": "PNG RGBA",
+      "anchor": "requires review/configuration"
+    },
+    {
+      "id": "wooden_palisade",
+      "path": "buildings/wooden_palisade.png",
+      "type": "buildings",
+      "source_bbox": [
+        165,
+        85,
+        290,
+        250
+      ],
+      "actual_size_px": [
+        96,
+        98
+      ],
+      "format": "PNG RGBA",
+      "anchor": "requires review/configuration"
+    },
+    {
+      "id": "stone_wall",
+      "path": "buildings/stone_wall.png",
+      "type": "buildings",
+      "source_bbox": [
+        290,
+        100,
+        420,
+        245
+      ],
+      "actual_size_px": [
+        103,
+        101
+      ],
+      "format": "PNG RGBA",
+      "anchor": "requires review/configuration"
+    },
+    {
+      "id": "archer_tower",
+      "path": "buildings/archer_tower.png",
+      "type": "buildings",
+      "source_bbox": [
+        415,
+        65,
+        535,
+        255
+      ],
+      "actual_size_px": [
+        74,
+        138
+      ],
+      "format": "PNG RGBA",
+      "anchor": "requires review/configuration"
+    },
+    {
+      "id": "lookout_tower",
+      "path": "buildings/lookout_tower.png",
+      "type": "buildings",
+      "source_bbox": [
+        520,
+        65,
+        640,
+        255
+      ],
+      "actual_size_px": [
+        72,
+        146
+      ],
+      "format": "PNG RGBA",
+      "anchor": "requires review/configuration"
+    },
+    {
+      "id": "farm",
+      "path": "buildings/farm.png",
+      "type": "buildings",
+      "source_bbox": [
+        0,
+        280,
+        165,
+        425
+      ],
+      "actual_size_px": [
+        122,
+        125
+      ],
+      "format": "PNG RGBA",
+      "anchor": "requires review/configuration"
+    },
+    {
+      "id": "lumber_camp",
+      "path": "buildings/lumber_camp.png",
+      "type": "buildings",
+      "source_bbox": [
+        165,
+        280,
+        320,
+        425
+      ],
+      "actual_size_px": [
+        122,
+        112
+      ],
+      "format": "PNG RGBA",
+      "anchor": "requires review/configuration"
+    },
+    {
+      "id": "house",
+      "path": "buildings/house.png",
+      "type": "buildings",
+      "source_bbox": [
+        320,
+        280,
+        470,
+        425
+      ],
+      "actual_size_px": [
+        106,
+        107
+      ],
+      "format": "PNG RGBA",
+      "anchor": "requires review/configuration"
+    },
+    {
+      "id": "workshop",
+      "path": "buildings/workshop.png",
+      "type": "buildings",
+      "source_bbox": [
+        470,
+        280,
+        625,
+        425
+      ],
+      "actual_size_px": [
+        85,
+        103
+      ],
+      "format": "PNG RGBA",
+      "anchor": "requires review/configuration"
+    },
+    {
+      "id": "grass_tile_01",
+      "path": "terrain/grass_tile_01.png",
+      "type": "terrain",
+      "source_bbox": [
+        0,
+        510,
+        120,
+        605
+      ],
+      "actual_size_px": [
+        81,
+        66
+      ],
+      "format": "PNG RGBA",
+      "anchor": "requires review/configuration"
+    },
+    {
+      "id": "grass_tile_02",
+      "path": "terrain/grass_tile_02.png",
+      "type": "terrain",
+      "source_bbox": [
+        120,
+        510,
+        240,
+        605
+      ],
+      "actual_size_px": [
+        99,
+        76
+      ],
+      "format": "PNG RGBA",
+      "anchor": "requires review/configuration"
+    },
+    {
+      "id": "grass_tile_03",
+      "path": "terrain/grass_tile_03.png",
+      "type": "terrain",
+      "source_bbox": [
+        240,
+        510,
+        360,
+        605
+      ],
+      "actual_size_px": [
+        97,
+        70
+      ],
+      "format": "PNG RGBA",
+      "anchor": "requires review/configuration"
+    },
+    {
+      "id": "grass_tile_04",
+      "path": "terrain/grass_tile_04.png",
+      "type": "terrain",
+      "source_bbox": [
+        360,
+        510,
+        485,
+        605
+      ],
+      "actual_size_px": [
+        99,
+        69
+      ],
+      "format": "PNG RGBA",
+      "anchor": "requires review/configuration"
+    },
+    {
+      "id": "dirt_tile",
+      "path": "terrain/dirt_tile.png",
+      "type": "terrain",
+      "source_bbox": [
+        20,
+        640,
+        137,
+        732
+      ],
+      "actual_size_px": [
+        87,
+        65
+      ],
+      "format": "PNG RGBA",
+      "anchor": "requires review/configuration"
+    },
+    {
+      "id": "stone_tile",
+      "path": "terrain/stone_tile.png",
+      "type": "terrain",
+      "source_bbox": [
+        131,
+        636,
+        262,
+        736
+      ],
+      "actual_size_px": [
+        113,
+        81
+      ],
+      "format": "PNG RGBA",
+      "anchor": "requires review/configuration"
+    },
+    {
+      "id": "road_straight",
+      "path": "terrain/road_straight.png",
+      "type": "terrain",
+      "source_bbox": [
+        256,
+        638,
+        392,
+        738
+      ],
+      "actual_size_px": [
+        125,
+        90
+      ],
+      "format": "PNG RGBA",
+      "anchor": "requires review/configuration"
+    },
+    {
+      "id": "road_corner",
+      "path": "terrain/road_corner.png",
+      "type": "terrain",
+      "source_bbox": [
+        382,
+        640,
+        507,
+        740
+      ],
+      "actual_size_px": [
+        117,
+        87
+      ],
+      "format": "PNG RGBA",
+      "anchor": "requires review/configuration"
+    },
+    {
+      "id": "road_t_junction",
+      "path": "terrain/road_t_junction.png",
+      "type": "terrain",
+      "source_bbox": [
+        18,
+        756,
+        142,
+        867
+      ],
+      "actual_size_px": [
+        111,
+        85
+      ],
+      "format": "PNG RGBA",
+      "anchor": "requires review/configuration"
+    },
+    {
+      "id": "road_crossroad",
+      "path": "terrain/road_crossroad.png",
+      "type": "terrain",
+      "source_bbox": [
+        140,
+        754,
+        262,
+        870
+      ],
+      "actual_size_px": [
+        114,
+        91
+      ],
+      "format": "PNG RGBA",
+      "anchor": "requires review/configuration"
+    },
+    {
+      "id": "pine_tree",
+      "path": "terrain/pine_tree.png",
+      "type": "terrain",
+      "source_bbox": [
+        253,
+        753,
+        392,
+        877
+      ],
+      "actual_size_px": [
+        99,
+        94
+      ],
+      "format": "PNG RGBA",
+      "anchor": "requires review/configuration"
+    },
+    {
+      "id": "deciduous_tree",
+      "path": "terrain/deciduous_tree.png",
+      "type": "terrain",
+      "source_bbox": [
+        386,
+        751,
+        512,
+        875
+      ],
+      "actual_size_px": [
+        67,
+        92
+      ],
+      "format": "PNG RGBA",
+      "anchor": "requires review/configuration"
+    },
+    {
+      "id": "rock_cluster",
+      "path": "terrain/rock_cluster.png",
+      "type": "terrain",
+      "source_bbox": [
+        1000,
+        500,
+        1090,
+        600
+      ],
+      "actual_size_px": [
+        60,
+        64
+      ],
+      "format": "PNG RGBA",
+      "anchor": "requires review/configuration"
+    },
+    {
+      "id": "bush",
+      "path": "terrain/bush.png",
+      "type": "terrain",
+      "source_bbox": [
+        1180,
+        515,
+        1246,
+        578
+      ],
+      "actual_size_px": [
+        43,
+        42
+      ],
+      "format": "PNG RGBA",
+      "anchor": "requires review/configuration"
+    },
+    {
+      "id": "dead_tree",
+      "path": "terrain/dead_tree.png",
+      "type": "terrain",
+      "source_bbox": [
+        1295,
+        503,
+        1372,
+        607
+      ],
+      "actual_size_px": [
+        49,
+        80
+      ],
+      "format": "PNG RGBA",
+      "anchor": "requires review/configuration"
+    },
+    {
+      "id": "arrow",
+      "path": "projectiles/arrow.png",
+      "type": "projectiles",
+      "source_bbox": [
+        531,
+        516,
+        606,
+        588
+      ],
+      "actual_size_px": [
+        63,
+        55
+      ],
+      "format": "PNG RGBA",
+      "anchor": "requires review/configuration"
+    },
+    {
+      "id": "large_arrow",
+      "path": "projectiles/large_arrow.png",
+      "type": "projectiles",
+      "source_bbox": [
+        616,
+        508,
+        710,
+        588
+      ],
+      "actual_size_px": [
+        78,
+        68
+      ],
+      "format": "PNG RGBA",
+      "anchor": "requires review/configuration"
+    },
+    {
+      "id": "fireball",
+      "path": "projectiles/fireball.png",
+      "type": "projectiles",
+      "source_bbox": [
+        720,
+        495,
+        835,
+        590
+      ],
+      "actual_size_px": [
+        53,
+        42
+      ],
+      "format": "PNG RGBA",
+      "anchor": "requires review/configuration"
+    },
+    {
+      "id": "magic_bolt",
+      "path": "projectiles/magic_bolt.png",
+      "type": "projectiles",
+      "source_bbox": [
+        876,
+        510,
+        990,
+        593
+      ],
+      "actual_size_px": [
+        68,
+        45
+      ],
+      "format": "PNG RGBA",
+      "anchor": "requires review/configuration"
+    },
+    {
+      "id": "impact_spark",
+      "path": "effects/impact_spark.png",
+      "type": "effects",
+      "source_bbox": [
+        520,
+        595,
+        620,
+        685
+      ],
+      "actual_size_px": [
+        38,
+        36
+      ],
+      "format": "PNG RGBA",
+      "anchor": "requires review/configuration"
+    },
+    {
+      "id": "dust_cloud",
+      "path": "effects/dust_cloud.png",
+      "type": "effects",
+      "source_bbox": [
+        620,
+        595,
+        720,
+        685
+      ],
+      "actual_size_px": [
+        41,
+        43
+      ],
+      "format": "PNG RGBA",
+      "anchor": "requires review/configuration"
+    },
+    {
+      "id": "green_death_effect",
+      "path": "effects/green_death_effect.png",
+      "type": "effects",
+      "source_bbox": [
+        720,
+        595,
+        820,
+        685
+      ],
+      "actual_size_px": [
+        39,
+        45
+      ],
+      "format": "PNG RGBA",
+      "anchor": "requires review/configuration"
+    },
+    {
+      "id": "explosion",
+      "path": "effects/explosion.png",
+      "type": "effects",
+      "source_bbox": [
+        853,
+        613,
+        987,
+        707
+      ],
+      "actual_size_px": [
+        79,
+        73
+      ],
+      "format": "PNG RGBA",
+      "anchor": "requires review/configuration"
+    },
+    {
+      "id": "gold",
+      "path": "ui/icons/gold.png",
+      "type": "ui",
+      "source_bbox": [
+        517,
+        906,
+        569,
+        975
+      ],
+      "actual_size_px": [
+        37,
+        38
+      ],
+      "format": "PNG RGBA",
+      "anchor": "requires review/configuration"
+    },
+    {
+      "id": "wood",
+      "path": "ui/icons/wood.png",
+      "type": "ui",
+      "source_bbox": [
+        567,
+        906,
+        619,
+        975
+      ],
+      "actual_size_px": [
+        35,
+        38
+      ],
+      "format": "PNG RGBA",
+      "anchor": "requires review/configuration"
+    },
+    {
+      "id": "stone",
+      "path": "ui/icons/stone.png",
+      "type": "ui",
+      "source_bbox": [
+        617,
+        906,
+        669,
+        975
+      ],
+      "actual_size_px": [
+        36,
+        39
+      ],
+      "format": "PNG RGBA",
+      "anchor": "requires review/configuration"
+    },
+    {
+      "id": "food",
+      "path": "ui/icons/food.png",
+      "type": "ui",
+      "source_bbox": [
+        667,
+        906,
+        719,
+        975
+      ],
+      "actual_size_px": [
+        35,
+        41
+      ],
+      "format": "PNG RGBA",
+      "anchor": "requires review/configuration"
+    },
+    {
+      "id": "health",
+      "path": "ui/icons/health.png",
+      "type": "ui",
+      "source_bbox": [
+        717,
+        906,
+        769,
+        975
+      ],
+      "actual_size_px": [
+        37,
+        36
+      ],
+      "format": "PNG RGBA",
+      "anchor": "requires review/configuration"
+    },
+    {
+      "id": "shield",
+      "path": "ui/icons/shield.png",
+      "type": "ui",
+      "source_bbox": [
+        767,
+        906,
+        819,
+        975
+      ],
+      "actual_size_px": [
+        35,
+        40
+      ],
+      "format": "PNG RGBA",
+      "anchor": "requires review/configuration"
+    },
+    {
+      "id": "sword",
+      "path": "ui/icons/sword.png",
+      "type": "ui",
+      "source_bbox": [
+        817,
+        906,
+        869,
+        975
+      ],
+      "actual_size_px": [
+        35,
+        39
+      ],
+      "format": "PNG RGBA",
+      "anchor": "requires review/configuration"
+    },
+    {
+      "id": "upgrade",
+      "path": "ui/icons/upgrade.png",
+      "type": "ui",
+      "source_bbox": [
+        867,
+        906,
+        919,
+        975
+      ],
+      "actual_size_px": [
+        40,
+        41
+      ],
+      "format": "PNG RGBA",
+      "anchor": "requires review/configuration"
+    },
+    {
+      "id": "quest",
+      "path": "ui/icons/quest.png",
+      "type": "ui",
+      "source_bbox": [
+        917,
+        906,
+        969,
+        975
+      ],
+      "actual_size_px": [
+        36,
+        40
+      ],
+      "format": "PNG RGBA",
+      "anchor": "requires review/configuration"
+    },
+    {
+      "id": "potion",
+      "path": "ui/icons/potion.png",
+      "type": "ui",
+      "source_bbox": [
+        966,
+        906,
+        1016,
+        975
+      ],
+      "actual_size_px": [
+        28,
+        41
+      ],
+      "format": "PNG RGBA",
+      "anchor": "requires review/configuration"
+    }
+  ]
+}

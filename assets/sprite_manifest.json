@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "note": "正式素材与素材包 A 的对应关系。画面引用见建筑和敌人 JSON，以及城堡、箭矢、命中特效、界面图标的脚本常量。",
+  "entries": [
+    {"game": "assets/sprites/buildings/castle.png", "source": "art_pack_a/buildings/castle.png", "used_in_game": true, "processing": "原图复制，未改像素"},
+    {"game": "assets/sprites/buildings/wooden_wall.png", "source": "art_pack_a/buildings/wooden_palisade.png", "used_in_game": true, "processing": "原图复制，只改文件名"},
+    {"game": "assets/sprites/buildings/archer_tower.png", "source": "art_pack_a/buildings/archer_tower.png", "used_in_game": true, "processing": "原图复制，未改像素"},
+    {"game": "assets/sprites/buildings/stone_wall.png", "source": "art_pack_a/buildings/stone_wall.png", "used_in_game": false, "processing": "原图复制。关卡只有一种城墙，已用木墙"},
+    {"game": "assets/sprites/buildings/lookout_tower.png", "source": "art_pack_a/buildings/lookout_tower.png", "used_in_game": false, "processing": "原图复制。阶段 1 没有瞭望塔"},
+    {"game": "assets/sprites/buildings/farm.png", "source": "art_pack_a/buildings/farm.png", "used_in_game": false, "processing": "原图复制。阶段 1 没有农场"},
+    {"game": "assets/sprites/buildings/house.png", "source": "art_pack_a/buildings/house.png", "used_in_game": false, "processing": "原图复制。阶段 1 没有住宅"},
+    {"game": "assets/sprites/buildings/lumber_camp.png", "source": "art_pack_a/buildings/lumber_camp.png", "used_in_game": false, "processing": "原图复制。阶段 1 没有伐木场"},
+    {"game": "assets/sprites/buildings/workshop.png", "source": "art_pack_a/buildings/workshop.png", "used_in_game": false, "processing": "原图复制。阶段 1 没有工坊"},
+    {"game": "assets/sprites/characters/enemies/goblin.png", "source": "art_pack_a/source/generated_asset_atlas_reference.png", "used_in_game": true, "processing": "从图集裁出单帧，去掉深色海报背景，主体 alpha 提升到 255"},
+    {"game": "assets/sprites/characters/lords/default_lord.png", "source": "art_pack_a/source/generated_asset_atlas_reference.png", "used_in_game": false, "processing": "单帧裁切。不是动画，未接入临时领主"},
+    {"game": "assets/sprites/projectiles/arrow_projectile.png", "source": "art_pack_a/source/generated_asset_atlas_reference.png", "used_in_game": true, "processing": "从图集裁出。素材包自带的 arrow.png 不是箭"},
+    {"game": "assets/sprites/effects/impact_spark.png", "source": "art_pack_a/effects/impact_spark.png", "used_in_game": true, "processing": "去掉脱离主体的小碎块"},
+    {"game": "assets/sprites/ui/icons/icon_gold.png", "source": "art_pack_a/source/generated_asset_atlas_reference.png", "used_in_game": true, "processing": "从图集裁出金币。素材包 ui/icons/gold.png 是文字残片"},
+    {"game": "assets/sprites/ui/icons/icon_health.png", "source": "art_pack_a/source/generated_asset_atlas_reference.png", "used_in_game": true, "processing": "从图集裁出。素材包 health.png 全透明"},
+    {"game": "assets/sprites/ui/icons/icon_shield.png", "source": "art_pack_a/source/generated_asset_atlas_reference.png", "used_in_game": true, "processing": "从图集裁出，用作城墙按钮图标"},
+    {"game": "assets/sprites/ui/icons/icon_wood.png", "source": "art_pack_a/source/generated_asset_atlas_reference.png", "used_in_game": false, "processing": "从图集裁出。阶段 1 没有木材"},
+    {"game": "assets/sprites/ui/icons/icon_stone.png", "source": "art_pack_a/source/generated_asset_atlas_reference.png", "used_in_game": false, "processing": "从图集裁出。阶段 1 没有石材"},
+    {"game": "assets/sprites/ui/icons/icon_food.png", "source": "art_pack_a/source/generated_asset_atlas_reference.png", "used_in_game": false, "processing": "从图集裁出。阶段 1 没有食物"},
+    {"game": "assets/sprites/ui/icons/icon_sword.png", "source": "art_pack_a/source/generated_asset_atlas_reference.png", "used_in_game": false, "processing": "从图集裁出。没有近战按钮"},
+    {"game": "assets/sprites/terrain/grass_tile_01.png", "source": "art_pack_a/terrain/grass_tile_01.png", "used_in_game": false, "processing": "原图复制。菱形块，未铺入方格关卡"},
+    {"game": "assets/sprites/terrain/grass_tile_02.png", "source": "art_pack_a/terrain/grass_tile_02.png", "used_in_game": false, "processing": "原图复制。尺寸与其他草块不一致"},
+    {"game": "assets/sprites/terrain/grass_tile_03.png", "source": "art_pack_a/terrain/grass_tile_03.png", "used_in_game": false, "processing": "原图复制"},
+    {"game": "assets/sprites/terrain/grass_tile_04.png", "source": "art_pack_a/terrain/grass_tile_04.png", "used_in_game": false, "processing": "原图复制"},
+    {"game": "assets/sprites/terrain/bush.png", "source": "art_pack_a/terrain/bush.png", "used_in_game": false, "processing": "原图复制。未放进关卡，避免挡住出兵点和城堡"},
+    {"game": "assets/sprites/terrain/rock_cluster.png", "source": "art_pack_a/terrain/rock_cluster.png", "used_in_game": false, "processing": "原图复制。未放进关卡"}
+  ]
+}

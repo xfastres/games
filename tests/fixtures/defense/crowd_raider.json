@@ -1,0 +1,12 @@
+{
+  "id": "base.crowd_raider",
+  "schema_version": 1,
+  "name": "群体测试敌人",
+  "scene": "res://scenes/combat/enemy_unit.tscn",
+  "sprite": "res://assets/sprites/characters/enemies/goblin.png",
+  "max_health": 80,
+  "move_speed": 180,
+  "contact_damage": 12,
+  "attack_interval": 0.25,
+  "gold_reward": 1
+}

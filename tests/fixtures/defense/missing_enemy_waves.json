@@ -1,0 +1,7 @@
+{
+  "id": "base.missing_enemy_waves",
+  "schema_version": 1,
+  "waves": [
+    {"enemy_id": "base.not_in_match", "count": 1, "spawn_interval": 1}
+  ]
+}

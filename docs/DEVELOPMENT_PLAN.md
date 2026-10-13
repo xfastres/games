@@ -79,4 +79,19 @@
 | 自动化测试 | `stage0_checks.gd` 输出 `STAGE0_PASS`，退出码 0 |
 | 实际启动 | 无头主场景 `--quit-after 30` 退出码 0；窗口模式生成了带网格、领主和测试哨所的画面 |
 
-阶段 0 验收已满足。还没有进入阶段 1。
+阶段 0 验收已满足。阶段 1 的实现和运行记录见下文，细节在 `docs/PHASE_1_ACCEPTANCE.md`。
+
+## 阶段 1 运行记录
+
+记录日期：2026-10-13。引擎：Godot 4.7.2.stable.official.ed1daf0bf。
+
+主场景已改为 `scenes/combat/defense_match.tscn`。技术验证场景仍保留在 `scenes/main/tech_demo.tscn`。
+
+| 检查 | 命令结果 |
+| --- | --- |
+| 脚本解析 | 26 个 `.gd` 的 `--check-only` 都是退出码 0 |
+| 阶段 1 自动化 | `stage1_checks.gd` 输出 `STAGE1_PASS`，退出码 0。脚本化布防在 1477 个物理帧后胜利，城堡仍为 300/300 |
+| 阶段 0 回归 | `stage0_checks.gd` 输出 `STAGE0_PASS`，退出码 0 |
+| 实际启动 | 无头主场景 `--quit-after 30` 打印 `DEFENSE_READY`，退出码 0。窗口 `--shot` 退出码 0，画面是城堡、出兵点和建造按钮 |
+
+这些是分开的结果。亲手用鼠标打一局，要在打开的游戏窗口里做。

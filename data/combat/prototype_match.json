@@ -1,0 +1,27 @@
+{
+  "id": "base.defense_prototype",
+  "schema_version": 1,
+  "columns": 16,
+  "rows": 8,
+  "cell_size": 64,
+  "starting_gold": 200,
+  "castle": {
+    "x": 0,
+    "y": 3,
+    "width": 2,
+    "height": 2,
+    "max_health": 300
+  },
+  "spawns": [
+    [15, 2],
+    [15, 5]
+  ],
+  "buildings": [
+    "res://data/buildings/wall.json",
+    "res://data/buildings/archer_tower.json"
+  ],
+  "enemies": [
+    "res://data/enemies/raider.json"
+  ],
+  "waves": "res://data/combat/prototype_waves.json"
+}

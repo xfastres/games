@@ -7,8 +7,8 @@ config_version=5
 
 config/name="Frontier Wardens"
 config/description="边境守望"
-config/version="0.1.0"
-run/main_scene="res://scenes/main/tech_demo.tscn"
+config/version="0.2.0"
+run/main_scene="res://scenes/combat/defense_match.tscn"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 run/flush_stdout_on_print=true
 config/icon="res://icon.svg"

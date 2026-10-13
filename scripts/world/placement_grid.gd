@@ -19,6 +19,30 @@ func is_occupied(cell: Vector2i) -> bool:
 	return _occupied.has(cell)
 
 
+func occupant(cell: Vector2i) -> String:
+	return str(_occupied.get(cell, ""))
+
+
+func reserve(cell: Vector2i, owner_id: String) -> String:
+	if columns < 1 or rows < 1:
+		return "无法预留：地图尺寸无效（%d x %d）" % [columns, rows]
+	if owner_id.is_empty():
+		return "无法预留：占用者 id 为空"
+	if not _in_bounds(cell):
+		return "无法预留：格子 (%d, %d) 超出地图范围" % [cell.x, cell.y]
+	if _occupied.has(cell):
+		return "无法预留：格子 (%d, %d) 已被占用" % [cell.x, cell.y]
+	_occupied[cell] = owner_id
+	return ""
+
+
+func release(cell: Vector2i) -> String:
+	if not _occupied.has(cell):
+		return "无法释放：格子 (%d, %d) 没有占用" % [cell.x, cell.y]
+	_occupied.erase(cell)
+	return ""
+
+
 func try_place(origin: Vector2i, definition: BuildingDefinition) -> Dictionary:
 	if columns < 1 or rows < 1:
 		return _fail("无法放置：地图尺寸无效（%d x %d）" % [columns, rows])

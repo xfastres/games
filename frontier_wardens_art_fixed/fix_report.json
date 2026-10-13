@@ -1,0 +1,800 @@
+[
+  {
+    "path": "buildings/castle.png",
+    "id": "castle",
+    "method": "clean_existing",
+    "old_size_px": [
+      148,
+      138
+    ],
+    "new_size_px": [
+      148,
+      138
+    ],
+    "atlas_bbox": [
+      0,
+      65,
+      180,
+      260
+    ]
+  },
+  {
+    "path": "buildings/wooden_palisade.png",
+    "id": "wooden_palisade",
+    "method": "clean_existing",
+    "old_size_px": [
+      96,
+      98
+    ],
+    "new_size_px": [
+      96,
+      98
+    ],
+    "atlas_bbox": [
+      165,
+      85,
+      290,
+      250
+    ]
+  },
+  {
+    "path": "buildings/stone_wall.png",
+    "id": "stone_wall",
+    "method": "clean_existing",
+    "old_size_px": [
+      103,
+      101
+    ],
+    "new_size_px": [
+      103,
+      101
+    ],
+    "atlas_bbox": [
+      290,
+      100,
+      420,
+      245
+    ]
+  },
+  {
+    "path": "buildings/archer_tower.png",
+    "id": "archer_tower",
+    "method": "clean_existing",
+    "old_size_px": [
+      74,
+      139
+    ],
+    "new_size_px": [
+      74,
+      138
+    ],
+    "atlas_bbox": [
+      415,
+      65,
+      535,
+      255
+    ]
+  },
+  {
+    "path": "buildings/lookout_tower.png",
+    "id": "lookout_tower",
+    "method": "clean_existing",
+    "old_size_px": [
+      72,
+      146
+    ],
+    "new_size_px": [
+      72,
+      146
+    ],
+    "atlas_bbox": [
+      520,
+      65,
+      640,
+      255
+    ]
+  },
+  {
+    "path": "buildings/farm.png",
+    "id": "farm",
+    "method": "clean_existing",
+    "old_size_px": [
+      122,
+      125
+    ],
+    "new_size_px": [
+      122,
+      125
+    ],
+    "atlas_bbox": [
+      0,
+      280,
+      165,
+      425
+    ]
+  },
+  {
+    "path": "buildings/lumber_camp.png",
+    "id": "lumber_camp",
+    "method": "clean_existing",
+    "old_size_px": [
+      122,
+      112
+    ],
+    "new_size_px": [
+      122,
+      112
+    ],
+    "atlas_bbox": [
+      165,
+      280,
+      320,
+      425
+    ]
+  },
+  {
+    "path": "buildings/house.png",
+    "id": "house",
+    "method": "clean_existing",
+    "old_size_px": [
+      106,
+      107
+    ],
+    "new_size_px": [
+      106,
+      107
+    ],
+    "atlas_bbox": [
+      320,
+      280,
+      470,
+      425
+    ]
+  },
+  {
+    "path": "buildings/workshop.png",
+    "id": "workshop",
+    "method": "clean_existing",
+    "old_size_px": [
+      85,
+      103
+    ],
+    "new_size_px": [
+      85,
+      103
+    ],
+    "atlas_bbox": [
+      470,
+      280,
+      625,
+      425
+    ]
+  },
+  {
+    "path": "terrain/grass_tile_01.png",
+    "id": "grass_tile_01",
+    "method": "clean_existing",
+    "old_size_px": [
+      81,
+      66
+    ],
+    "new_size_px": [
+      81,
+      66
+    ],
+    "atlas_bbox": [
+      0,
+      510,
+      120,
+      605
+    ]
+  },
+  {
+    "path": "terrain/grass_tile_02.png",
+    "id": "grass_tile_02",
+    "method": "clean_existing",
+    "old_size_px": [
+      99,
+      76
+    ],
+    "new_size_px": [
+      99,
+      76
+    ],
+    "atlas_bbox": [
+      120,
+      510,
+      240,
+      605
+    ]
+  },
+  {
+    "path": "terrain/grass_tile_03.png",
+    "id": "grass_tile_03",
+    "method": "clean_existing",
+    "old_size_px": [
+      97,
+      70
+    ],
+    "new_size_px": [
+      97,
+      70
+    ],
+    "atlas_bbox": [
+      240,
+      510,
+      360,
+      605
+    ]
+  },
+  {
+    "path": "terrain/grass_tile_04.png",
+    "id": "grass_tile_04",
+    "method": "clean_existing",
+    "old_size_px": [
+      99,
+      69
+    ],
+    "new_size_px": [
+      99,
+      69
+    ],
+    "atlas_bbox": [
+      360,
+      510,
+      485,
+      605
+    ]
+  },
+  {
+    "path": "terrain/dirt_tile.png",
+    "id": "dirt_tile",
+    "method": "grabcut_from_atlas:scene",
+    "old_size_px": [
+      120,
+      95
+    ],
+    "new_size_px": [
+      87,
+      65
+    ],
+    "atlas_bbox": [
+      20,
+      640,
+      137,
+      732
+    ]
+  },
+  {
+    "path": "terrain/stone_tile.png",
+    "id": "stone_tile",
+    "method": "grabcut_from_atlas:scene",
+    "old_size_px": [
+      120,
+      95
+    ],
+    "new_size_px": [
+      113,
+      81
+    ],
+    "atlas_bbox": [
+      131,
+      636,
+      262,
+      736
+    ]
+  },
+  {
+    "path": "terrain/road_straight.png",
+    "id": "road_straight",
+    "method": "grabcut_from_atlas:scene",
+    "old_size_px": [
+      7,
+      6
+    ],
+    "new_size_px": [
+      125,
+      90
+    ],
+    "atlas_bbox": [
+      256,
+      638,
+      392,
+      738
+    ]
+  },
+  {
+    "path": "terrain/road_corner.png",
+    "id": "road_corner",
+    "method": "grabcut_from_atlas:scene",
+    "old_size_px": [
+      5,
+      6
+    ],
+    "new_size_px": [
+      117,
+      87
+    ],
+    "atlas_bbox": [
+      382,
+      640,
+      507,
+      740
+    ]
+  },
+  {
+    "path": "terrain/road_t_junction.png",
+    "id": "road_t_junction",
+    "method": "grabcut_from_atlas:scene",
+    "old_size_px": [
+      46,
+      14
+    ],
+    "new_size_px": [
+      111,
+      85
+    ],
+    "atlas_bbox": [
+      18,
+      756,
+      142,
+      867
+    ]
+  },
+  {
+    "path": "terrain/road_crossroad.png",
+    "id": "road_crossroad",
+    "method": "grabcut_from_atlas:scene",
+    "old_size_px": [
+      5,
+      10
+    ],
+    "new_size_px": [
+      114,
+      91
+    ],
+    "atlas_bbox": [
+      140,
+      754,
+      262,
+      870
+    ]
+  },
+  {
+    "path": "terrain/pine_tree.png",
+    "id": "pine_tree",
+    "method": "grabcut_from_atlas:scene",
+    "old_size_px": [
+      58,
+      43
+    ],
+    "new_size_px": [
+      99,
+      94
+    ],
+    "atlas_bbox": [
+      253,
+      753,
+      392,
+      877
+    ]
+  },
+  {
+    "path": "terrain/deciduous_tree.png",
+    "id": "deciduous_tree",
+    "method": "grabcut_from_atlas:scene",
+    "old_size_px": [
+      110,
+      110
+    ],
+    "new_size_px": [
+      67,
+      92
+    ],
+    "atlas_bbox": [
+      386,
+      751,
+      512,
+      875
+    ]
+  },
+  {
+    "path": "terrain/rock_cluster.png",
+    "id": "rock_cluster",
+    "method": "clean_existing",
+    "old_size_px": [
+      60,
+      64
+    ],
+    "new_size_px": [
+      60,
+      64
+    ],
+    "atlas_bbox": [
+      1000,
+      500,
+      1090,
+      600
+    ]
+  },
+  {
+    "path": "terrain/bush.png",
+    "id": "bush",
+    "method": "grabcut_from_atlas:scene",
+    "old_size_px": [
+      67,
+      60
+    ],
+    "new_size_px": [
+      43,
+      42
+    ],
+    "atlas_bbox": [
+      1180,
+      515,
+      1246,
+      578
+    ]
+  },
+  {
+    "path": "terrain/dead_tree.png",
+    "id": "dead_tree",
+    "method": "grabcut_from_atlas:tree",
+    "old_size_px": [
+      90,
+      105
+    ],
+    "new_size_px": [
+      49,
+      80
+    ],
+    "atlas_bbox": [
+      1295,
+      503,
+      1372,
+      607
+    ]
+  },
+  {
+    "path": "projectiles/arrow.png",
+    "id": "arrow",
+    "method": "grabcut_from_atlas:arrow",
+    "old_size_px": [
+      22,
+      23
+    ],
+    "new_size_px": [
+      63,
+      55
+    ],
+    "atlas_bbox": [
+      531,
+      516,
+      606,
+      588
+    ]
+  },
+  {
+    "path": "projectiles/large_arrow.png",
+    "id": "large_arrow",
+    "method": "grabcut_from_atlas:arrow",
+    "old_size_px": [
+      28,
+      28
+    ],
+    "new_size_px": [
+      78,
+      68
+    ],
+    "atlas_bbox": [
+      616,
+      508,
+      710,
+      588
+    ]
+  },
+  {
+    "path": "projectiles/fireball.png",
+    "id": "fireball",
+    "method": "clean_existing",
+    "old_size_px": [
+      53,
+      42
+    ],
+    "new_size_px": [
+      53,
+      42
+    ],
+    "atlas_bbox": [
+      720,
+      495,
+      835,
+      590
+    ]
+  },
+  {
+    "path": "projectiles/magic_bolt.png",
+    "id": "magic_bolt",
+    "method": "grabcut_from_atlas:bolt",
+    "old_size_px": [
+      10,
+      30
+    ],
+    "new_size_px": [
+      68,
+      45
+    ],
+    "atlas_bbox": [
+      876,
+      510,
+      990,
+      593
+    ]
+  },
+  {
+    "path": "effects/impact_spark.png",
+    "id": "impact_spark",
+    "method": "clean_existing",
+    "old_size_px": [
+      55,
+      45
+    ],
+    "new_size_px": [
+      38,
+      36
+    ],
+    "atlas_bbox": [
+      520,
+      595,
+      620,
+      685
+    ]
+  },
+  {
+    "path": "effects/dust_cloud.png",
+    "id": "dust_cloud",
+    "method": "clean_existing",
+    "old_size_px": [
+      41,
+      43
+    ],
+    "new_size_px": [
+      41,
+      43
+    ],
+    "atlas_bbox": [
+      620,
+      595,
+      720,
+      685
+    ]
+  },
+  {
+    "path": "effects/green_death_effect.png",
+    "id": "green_death_effect",
+    "method": "clean_existing",
+    "old_size_px": [
+      39,
+      45
+    ],
+    "new_size_px": [
+      39,
+      45
+    ],
+    "atlas_bbox": [
+      720,
+      595,
+      820,
+      685
+    ]
+  },
+  {
+    "path": "effects/explosion.png",
+    "id": "explosion",
+    "method": "grabcut_from_atlas:scene",
+    "old_size_px": [
+      24,
+      36
+    ],
+    "new_size_px": [
+      79,
+      73
+    ],
+    "atlas_bbox": [
+      853,
+      613,
+      987,
+      707
+    ]
+  },
+  {
+    "path": "ui/icons/gold.png",
+    "id": "gold",
+    "method": "grabcut_from_atlas:ui",
+    "old_size_px": [
+      50,
+      22
+    ],
+    "new_size_px": [
+      37,
+      38
+    ],
+    "atlas_bbox": [
+      517,
+      906,
+      569,
+      975
+    ]
+  },
+  {
+    "path": "ui/icons/wood.png",
+    "id": "wood",
+    "method": "grabcut_from_atlas:ui",
+    "old_size_px": [
+      27,
+      21
+    ],
+    "new_size_px": [
+      35,
+      38
+    ],
+    "atlas_bbox": [
+      567,
+      906,
+      619,
+      975
+    ]
+  },
+  {
+    "path": "ui/icons/stone.png",
+    "id": "stone",
+    "method": "grabcut_from_atlas:ui",
+    "old_size_px": [
+      56,
+      20
+    ],
+    "new_size_px": [
+      36,
+      39
+    ],
+    "atlas_bbox": [
+      617,
+      906,
+      669,
+      975
+    ]
+  },
+  {
+    "path": "ui/icons/food.png",
+    "id": "food",
+    "method": "grabcut_from_atlas:ui",
+    "old_size_px": [
+      65,
+      65
+    ],
+    "new_size_px": [
+      35,
+      41
+    ],
+    "atlas_bbox": [
+      667,
+      906,
+      719,
+      975
+    ]
+  },
+  {
+    "path": "ui/icons/health.png",
+    "id": "health",
+    "method": "grabcut_from_atlas:ui",
+    "old_size_px": [
+      65,
+      65
+    ],
+    "new_size_px": [
+      37,
+      36
+    ],
+    "atlas_bbox": [
+      717,
+      906,
+      769,
+      975
+    ]
+  },
+  {
+    "path": "ui/icons/shield.png",
+    "id": "shield",
+    "method": "grabcut_from_atlas:ui",
+    "old_size_px": [
+      65,
+      65
+    ],
+    "new_size_px": [
+      35,
+      40
+    ],
+    "atlas_bbox": [
+      767,
+      906,
+      819,
+      975
+    ]
+  },
+  {
+    "path": "ui/icons/sword.png",
+    "id": "sword",
+    "method": "grabcut_from_atlas:ui",
+    "old_size_px": [
+      65,
+      65
+    ],
+    "new_size_px": [
+      35,
+      39
+    ],
+    "atlas_bbox": [
+      817,
+      906,
+      869,
+      975
+    ]
+  },
+  {
+    "path": "ui/icons/upgrade.png",
+    "id": "upgrade",
+    "method": "grabcut_from_atlas:gear",
+    "old_size_px": [
+      36,
+      32
+    ],
+    "new_size_px": [
+      40,
+      41
+    ],
+    "atlas_bbox": [
+      867,
+      906,
+      919,
+      975
+    ]
+  },
+  {
+    "path": "ui/icons/quest.png",
+    "id": "quest",
+    "method": "grabcut_from_atlas:ui",
+    "old_size_px": [
+      14,
+      16
+    ],
+    "new_size_px": [
+      36,
+      40
+    ],
+    "atlas_bbox": [
+      917,
+      906,
+      969,
+      975
+    ]
+  },
+  {
+    "path": "ui/icons/potion.png",
+    "id": "potion",
+    "method": "grabcut_from_atlas:ui",
+    "old_size_px": [
+      35,
+      33
+    ],
+    "new_size_px": [
+      28,
+      41
+    ],
+    "atlas_bbox": [
+      966,
+      906,
+      1016,
+      975
+    ]
+  }
+]

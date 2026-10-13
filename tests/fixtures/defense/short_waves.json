@@ -1,0 +1,7 @@
+{
+  "id": "base.short_waves",
+  "schema_version": 1,
+  "waves": [
+    {"enemy_id": "base.short_raider", "count": 1, "spawn_interval": 0.2}
+  ]
+}

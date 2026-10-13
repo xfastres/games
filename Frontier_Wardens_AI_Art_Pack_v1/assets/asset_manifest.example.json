@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "assets": [
+    {
+      "id": "building.archer_tower",
+      "type": "building",
+      "path": "assets/sprites/buildings/archer_tower.png",
+      "canvas_size": [
+        192,
+        224
+      ],
+      "anchor": "bottom_center",
+      "status": "planned"
+    },
+    {
+      "id": "building.wooden_wall",
+      "type": "building",
+      "path": "assets/sprites/buildings/wooden_wall.png",
+      "canvas_size": [
+        128,
+        128
+      ],
+      "anchor": "bottom_center",
+      "status": "planned"
+    },
+    {
+      "id": "lord.default.idle",
+      "type": "character_animation",
+      "path": "assets/sprites/characters/lords/default_lord/default_lord_idle.png",
+      "frame_size": [
+        128,
+        128
+      ],
+      "frame_count": 4,
+      "fps": 5,
+      "loop": true,
+      "anchor": "feet",
+      "status": "planned"
+    }
+  ]
+}

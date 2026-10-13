@@ -1,0 +1,9 @@
+{
+  "id": "base.missing_setup",
+  "schema_version": 1,
+  "name": "缺少战斗入口",
+  "scene": "res://scenes/buildings/placeholder_building.tscn",
+  "cost": 5,
+  "footprint": {"width": 1, "height": 1},
+  "behavior": {"type": "blocker", "max_health": 10}
+}

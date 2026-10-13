@@ -1,0 +1,17 @@
+{
+  "id": "base.short_tower",
+  "schema_version": 1,
+  "name": "测试塔",
+  "description": "阶段 1 夹具。",
+  "scene": "res://scenes/buildings/combat_building.tscn",
+  "cost": 10,
+  "footprint": {"width": 1, "height": 1},
+  "behavior": {
+    "type": "ranged",
+    "max_health": 80,
+    "range": 200,
+    "attack_interval": 0.05,
+    "damage": 100,
+    "projectile_speed": 900
+  }
+}

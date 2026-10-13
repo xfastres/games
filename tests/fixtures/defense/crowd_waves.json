@@ -1,0 +1,7 @@
+{
+  "id": "base.crowd_waves",
+  "schema_version": 1,
+  "waves": [
+    {"enemy_id": "base.crowd_raider", "count": 10, "spawn_interval": 0.35}
+  ]
+}

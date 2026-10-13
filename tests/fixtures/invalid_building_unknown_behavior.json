@@ -1,0 +1,15 @@
+{
+  "id": "base.bad_behavior",
+  "schema_version": 1,
+  "name": "坏行为",
+  "scene": "res://scenes/buildings/placeholder_building.tscn",
+  "cost": 5,
+  "footprint": {
+    "width": 1,
+    "height": 1
+  },
+  "behavior": {
+    "type": "flyer",
+    "max_health": 10
+  }
+}

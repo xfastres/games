@@ -1,0 +1,11 @@
+{
+  "id": "base.defeat_raider",
+  "schema_version": 1,
+  "name": "破城敌人",
+  "scene": "res://scenes/combat/enemy_unit.tscn",
+  "max_health": 80,
+  "move_speed": 300,
+  "contact_damage": 50,
+  "attack_interval": 0.3,
+  "gold_reward": 3
+}

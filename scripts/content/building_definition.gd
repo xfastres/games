@@ -2,6 +2,8 @@ class_name BuildingDefinition
 extends RefCounted
 
 const SUPPORTED_SCHEMA_VERSION := 1
+const BEHAVIOR_BLOCKER := "blocker"
+const BEHAVIOR_RANGED := "ranged"
 const ROOT_FIELDS: Array[String] = [
 	"id",
 	"schema_version",
@@ -9,10 +11,22 @@ const ROOT_FIELDS: Array[String] = [
 	"description",
 	"scene",
 	"icon",
+	"sprite",
 	"footprint",
+	"cost",
+	"behavior",
 ]
 const REQUIRED_ROOT: Array[String] = ["id", "schema_version", "name", "scene", "footprint"]
 const FOOTPRINT_FIELDS: Array[String] = ["width", "height"]
+const BLOCKER_FIELDS: Array[String] = ["type", "max_health"]
+const RANGED_FIELDS: Array[String] = [
+	"type",
+	"max_health",
+	"range",
+	"attack_interval",
+	"damage",
+	"projectile_speed",
+]
 
 var id: String
 var schema_version: int
@@ -20,8 +34,17 @@ var display_name: String
 var description: String
 var scene_path: String
 var icon_path: String
+var sprite_path: String
 var footprint_width: int
 var footprint_height: int
+var cost: int
+var has_cost := false
+var behavior_type := ""
+var max_health: int
+var attack_range: float
+var attack_interval: float
+var attack_damage: int
+var projectile_speed: float
 
 
 static func parse_text(text: String) -> Dictionary:
@@ -82,6 +105,16 @@ static func parse_dictionary(data: Dictionary) -> Dictionary:
 			return _fail(icon_error)
 		icon_text = icon_value.value
 
+	var sprite_text := ""
+	if data.has("sprite"):
+		var sprite_value := _read_string(data["sprite"], "sprite")
+		if not sprite_value.ok:
+			return sprite_value
+		var sprite_error := ResourcePath.validate_project_file(sprite_value.value, "字段 sprite", ".png")
+		if sprite_error != "":
+			return _fail(sprite_error)
+		sprite_text = sprite_value.value
+
 	if typeof(data["footprint"]) != TYPE_DICTIONARY:
 		return _fail("字段类型错误：footprint 应为对象")
 	var footprint: Dictionary = data["footprint"]
@@ -100,6 +133,25 @@ static func parse_dictionary(data: Dictionary) -> Dictionary:
 			% [int(width.value), int(height.value)]
 		)
 
+	var cost_value := 0
+	var cost_present := false
+	if data.has("cost"):
+		var cost_read := _read_int(data["cost"], "cost")
+		if not cost_read.ok:
+			return cost_read
+		if int(cost_read.value) < 0:
+			return _fail("字段取值无效：cost 不能为负，实际为 %d" % int(cost_read.value))
+		cost_value = int(cost_read.value)
+		cost_present = true
+
+	var behavior := _empty_behavior()
+	if data.has("behavior"):
+		behavior = _parse_behavior(data["behavior"])
+		if not behavior.ok:
+			return behavior
+		if not cost_present or cost_value < 1:
+			return _fail("字段取值无效：有行为的建筑 cost 必须大于 0")
+
 	var definition := BuildingDefinition.new()
 	definition.id = id_text.value
 	definition.schema_version = int(version.value)
@@ -107,32 +159,91 @@ static func parse_dictionary(data: Dictionary) -> Dictionary:
 	definition.description = description_text
 	definition.scene_path = scene_value.value
 	definition.icon_path = icon_text
+	definition.sprite_path = sprite_text
 	definition.footprint_width = int(width.value)
 	definition.footprint_height = int(height.value)
+	definition.cost = cost_value
+	definition.has_cost = cost_present
+	definition.behavior_type = str(behavior.type)
+	definition.max_health = int(behavior.max_health)
+	definition.attack_range = float(behavior.attack_range)
+	definition.attack_interval = float(behavior.attack_interval)
+	definition.attack_damage = int(behavior.attack_damage)
+	definition.projectile_speed = float(behavior.projectile_speed)
 	return {"ok": true, "error": "", "definition": definition}
 
 
+static func _parse_behavior(value: Variant) -> Dictionary:
+	if typeof(value) != TYPE_DICTIONARY:
+		return _fail("字段类型错误：behavior 应为对象")
+	var behavior: Dictionary = value
+	if not behavior.has("type"):
+		return _fail("缺少字段：behavior.type")
+	var type_read := _read_nonempty_string(behavior["type"], "behavior.type")
+	if not type_read.ok:
+		return type_read
+	var behavior_type := str(type_read.value)
+	var allowed: Array[String] = []
+	if behavior_type == BEHAVIOR_BLOCKER:
+		allowed = BLOCKER_FIELDS
+	elif behavior_type == BEHAVIOR_RANGED:
+		allowed = RANGED_FIELDS
+	else:
+		return _fail("未知行为类型：%s" % behavior_type)
+	var shape_error := _validate_object_keys(behavior, allowed, allowed, "behavior.")
+	if shape_error != "":
+		return _fail(shape_error)
+
+	var health := _read_int(behavior["max_health"], "behavior.max_health")
+	if not health.ok:
+		return health
+	if int(health.value) < 1:
+		return _fail("字段取值无效：behavior.max_health 必须大于 0，实际为 %d" % int(health.value))
+
+	var result := _empty_behavior()
+	result.ok = true
+	result.type = behavior_type
+	result.max_health = int(health.value)
+	if behavior_type != BEHAVIOR_RANGED:
+		return result
+
+	var attack_range := _read_positive_number(behavior["range"], "behavior.range")
+	if not attack_range.ok:
+		return attack_range
+	var interval := _read_positive_number(behavior["attack_interval"], "behavior.attack_interval")
+	if not interval.ok:
+		return interval
+	var damage := _read_int(behavior["damage"], "behavior.damage")
+	if not damage.ok:
+		return damage
+	if int(damage.value) < 1:
+		return _fail("字段取值无效：behavior.damage 必须大于 0，实际为 %d" % int(damage.value))
+	var speed := _read_positive_number(behavior["projectile_speed"], "behavior.projectile_speed")
+	if not speed.ok:
+		return speed
+	result.attack_range = float(attack_range.value)
+	result.attack_interval = float(interval.value)
+	result.attack_damage = int(damage.value)
+	result.projectile_speed = float(speed.value)
+	return result
+
+
+static func _empty_behavior() -> Dictionary:
+	return {
+		"ok": true,
+		"error": "",
+		"definition": null,
+		"type": "",
+		"max_health": 0,
+		"attack_range": 0.0,
+		"attack_interval": 0.0,
+		"attack_damage": 0,
+		"projectile_speed": 0.0,
+	}
+
+
 static func _validate_id(id_text: String) -> String:
-	var parts := id_text.split(".")
-	if parts.size() < 2:
-		return "字段取值无效：id 必须是带命名空间的小写标识，例如 base.test_watchpost"
-	for part in parts:
-		if part.is_empty() or not _is_id_segment(part):
-			return "字段取值无效：id 必须是带命名空间的小写标识，例如 base.test_watchpost"
-	return ""
-
-
-static func _is_id_segment(segment: String) -> bool:
-	var first := segment.unicode_at(0)
-	if first < 97 or first > 122:
-		return false
-	for index in range(1, segment.length()):
-		var code := segment.unicode_at(index)
-		var is_lower := code >= 97 and code <= 122
-		var is_digit := code >= 48 and code <= 57
-		if not (is_lower or is_digit or code == 95):
-			return false
-	return true
+	return ContentFields.validate_id(id_text)
 
 
 static func _validate_object_keys(
@@ -141,41 +252,35 @@ static func _validate_object_keys(
 	required: Array[String],
 	prefix: String
 ) -> String:
-	for key in required:
-		if not data.has(key):
-			return "缺少字段：%s%s" % [prefix, key]
-	var unknown: Array[String] = []
-	for key in data.keys():
-		if typeof(key) != TYPE_STRING or not allowed.has(key):
-			unknown.append(str(key))
-	unknown.sort()
-	if not unknown.is_empty():
-		return "未知字段：%s%s" % [prefix, unknown[0]]
-	return ""
+	return ContentFields.validate_keys(data, allowed, required, prefix)
 
 
 static func _read_string(value: Variant, field_path: String) -> Dictionary:
-	if typeof(value) != TYPE_STRING:
-		return _fail("字段类型错误：%s 应为字符串" % field_path)
-	return {"ok": true, "error": "", "value": value, "definition": null}
+	var read := ContentFields.read_string(value, field_path)
+	if not read.ok:
+		return _fail(str(read.error))
+	return {"ok": true, "error": "", "value": read.value, "definition": null}
 
 
 static func _read_nonempty_string(value: Variant, field_path: String) -> Dictionary:
-	var read := _read_string(value, field_path)
+	var read := ContentFields.read_nonempty_string(value, field_path)
 	if not read.ok:
-		return read
-	var text := str(read.value).strip_edges()
-	if text.is_empty():
-		return _fail("字段取值无效：%s 不能为空" % field_path)
-	return {"ok": true, "error": "", "value": text, "definition": null}
+		return _fail(str(read.error))
+	return {"ok": true, "error": "", "value": read.value, "definition": null}
 
 
 static func _read_int(value: Variant, field_path: String) -> Dictionary:
-	if typeof(value) == TYPE_BOOL or (typeof(value) != TYPE_INT and typeof(value) != TYPE_FLOAT):
-		return _fail("字段类型错误：%s 应为整数" % field_path)
-	if typeof(value) == TYPE_FLOAT and not is_equal_approx(float(value), round(float(value))):
-		return _fail("字段类型错误：%s 应为整数" % field_path)
-	return {"ok": true, "error": "", "value": int(value), "definition": null}
+	var read := ContentFields.read_int(value, field_path)
+	if not read.ok:
+		return _fail(str(read.error))
+	return {"ok": true, "error": "", "value": read.value, "definition": null}
+
+
+static func _read_positive_number(value: Variant, field_path: String) -> Dictionary:
+	var read := ContentFields.read_positive_number(value, field_path)
+	if not read.ok:
+		return _fail(str(read.error))
+	return {"ok": true, "error": "", "value": read.value, "definition": null}
 
 
 static func _fail(message: String) -> Dictionary:

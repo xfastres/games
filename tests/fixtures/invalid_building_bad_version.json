@@ -1,0 +1,10 @@
+{
+  "id": "base.bad_version",
+  "schema_version": 2,
+  "name": "错误版本",
+  "scene": "res://scenes/buildings/placeholder_building.tscn",
+  "footprint": {
+    "width": 1,
+    "height": 1
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "id": "base.unknown_field",
+  "schema_version": 1,
+  "name": "未知字段",
+  "surprise": true,
+  "scene": "res://scenes/buildings/placeholder_building.tscn",
+  "footprint": {
+    "width": 1,
+    "height": 1
+  }
+}

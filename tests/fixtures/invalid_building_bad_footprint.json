@@ -1,0 +1,10 @@
+{
+  "id": "base.bad_footprint",
+  "schema_version": 1,
+  "name": "错误占地",
+  "scene": "res://scenes/buildings/placeholder_building.tscn",
+  "footprint": {
+    "width": 0,
+    "height": 1
+  }
+}

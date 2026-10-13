@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://scripts/lord/temp_lord.gd" id="1_lord"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_body"]
+size = Vector2(24, 24)
+
+[node name="TempLord" type="CharacterBody2D"]
+z_index = 2
+script = ExtResource("1_lord")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_body")
+
+[node name="Visual" type="Polygon2D" parent="."]
+color = Color(0.231373, 0.509804, 0.964706, 1)
+polygon = PackedVector2Array(0, -16, 14, 0, 0, 16, -14, 0)

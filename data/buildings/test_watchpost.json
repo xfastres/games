@@ -1,0 +1,11 @@
+{
+  "id": "base.test_watchpost",
+  "schema_version": 1,
+  "name": "测试哨所",
+  "description": "阶段 0 用于验证网格放置的占位建筑。",
+  "scene": "res://scenes/buildings/placeholder_building.tscn",
+  "footprint": {
+    "width": 1,
+    "height": 1
+  }
+}

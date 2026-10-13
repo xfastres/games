@@ -1,0 +1,10 @@
+# Godot 4 import cache and local editor state
+.godot/
+
+# Optional local captures from the stage 0 verification scene
+tests/artifacts/
+
+# OS junk
+.DS_Store
+Thumbs.db
+Desktop.ini

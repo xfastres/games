@@ -1,0 +1,10 @@
+{
+  "id": "base.missing_scene",
+  "schema_version": 1,
+  "name": "丢失场景",
+  "scene": "res://scenes/buildings/missing_building.tscn",
+  "footprint": {
+    "width": 1,
+    "height": 1
+  }
+}

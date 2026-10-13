@@ -1,0 +1,27 @@
+; Engine configuration file.
+; Godot 4.7 may rewrite this file on import. Keep the main scene and renderer.
+
+config_version=5
+
+[application]
+
+config/name="Frontier Wardens"
+config/description="边境守望"
+config/version="0.1.0"
+run/main_scene="res://scenes/main/tech_demo.tscn"
+config/features=PackedStringArray("4.7", "GL Compatibility")
+run/flush_stdout_on_print=true
+config/icon="res://icon.svg"
+
+[display]
+
+window/size/viewport_width=1280
+window/size/viewport_height=720
+window/size/window_width_override=1280
+window/size/window_height_override=720
+
+[rendering]
+
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"
+environment/defaults/default_clear_color=Color(0.08, 0.09, 0.11, 1)

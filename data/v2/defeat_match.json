@@ -1,0 +1,27 @@
+{
+  "id": "base.v2_defeat",
+  "schema_version": 1,
+  "columns": 16,
+  "rows": 8,
+  "cell_size": 64,
+  "starting_gold": 200,
+  "castle": {
+    "x": 0,
+    "y": 3,
+    "width": 2,
+    "height": 2,
+    "max_health": 9
+  },
+  "spawns": [
+    [15, 2],
+    [15, 5]
+  ],
+  "buildings": [
+    "res://data/v2/buildings/wall.json",
+    "res://data/v2/buildings/archer_tower.json"
+  ],
+  "enemies": [
+    "res://data/v2/enemies/raider.json"
+  ],
+  "waves": "res://data/v2/one_wave.json"
+}

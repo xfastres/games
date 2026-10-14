@@ -2,7 +2,8 @@ class_name TerrainField
 extends RefCounted
 
 ## 方格地形。逻辑种类和寻路阻挡分开。
-## 素材包里的草地是菱形，道路裁图只有几像素，不能拿来拼接，所以图块在运行时画成 64 像素方块。
+## 素材包里的草地是菱形，道路裁图不能拼接，所以图块在运行时画成 64 像素方块。
+## 道路用 TileSet 的四边地形连接选图，不按格子手写最终贴图。
 
 const GRASS := "grass"
 const DIRT := "dirt"
@@ -15,6 +16,8 @@ const NORTH := 1
 const EAST := 2
 const SOUTH := 4
 const WEST := 8
+const TERRAIN_SET := 0
+const ROAD_TERRAIN := 0
 
 const UNUSABLE_ART: PackedStringArray = [
 	"res://assets/sprites/terrain/grass_tile_01.png",
@@ -91,24 +94,28 @@ func tileset() -> TileSet:
 func apply(layer: TileMapLayer) -> void:
 	layer.tile_set = tileset()
 	layer.clear()
+	var roads: Array[Vector2i] = []
 	for y in rows:
 		for x in columns:
 			var cell := Vector2i(x, y)
-			layer.set_cell(cell, SOURCE_ID, atlas_coords(cell))
+			if kind_at(cell) == ROAD:
+				roads.append(cell)
+			else:
+				layer.set_cell(cell, SOURCE_ID, atlas_coords(cell))
+	if roads.is_empty():
+		return
+	layer.set_cells_terrain_connect(roads, TERRAIN_SET, ROAD_TERRAIN, true)
+	for y in rows:
+		for x in columns:
+			var cell := Vector2i(x, y)
+			if kind_at(cell) != ROAD:
+				layer.set_cell(cell, SOURCE_ID, atlas_coords(cell))
 
 
 func refresh(layer: TileMapLayer, cell: Vector2i) -> void:
-	if layer.tile_set == null:
-		layer.tile_set = tileset()
-	_paint_cell(layer, cell)
-	for direction in [Vector2i(0, -1), Vector2i(1, 0), Vector2i(0, 1), Vector2i(-1, 0)]:
-		_paint_cell(layer, cell + direction)
-
-
-func _paint_cell(layer: TileMapLayer, cell: Vector2i) -> void:
 	if not _inside(cell):
 		return
-	layer.set_cell(cell, SOURCE_ID, atlas_coords(cell))
+	apply(layer)
 
 
 func _build_tileset() -> TileSet:
@@ -139,7 +146,26 @@ func _build_tileset() -> TileSet:
 	var set := TileSet.new()
 	set.tile_size = Vector2i(TILE_SIZE, TILE_SIZE)
 	set.add_source(source, SOURCE_ID)
+	set.add_terrain_set(TERRAIN_SET)
+	set.set_terrain_set_mode(TERRAIN_SET, TileSet.TERRAIN_MODE_MATCH_SIDES)
+	set.add_terrain(TERRAIN_SET, ROAD_TERRAIN)
+	set.set_terrain_name(TERRAIN_SET, ROAD_TERRAIN, "road")
+	for mask in 16:
+		var coords := Vector2i(mask % 8, 1 + int(mask / 8.0))
+		var data := source.get_tile_data(coords, 0)
+		data.set_terrain_set(TERRAIN_SET)
+		data.set_terrain(ROAD_TERRAIN)
+		data.set_terrain_peering_bit(TileSet.CELL_NEIGHBOR_TOP_SIDE, _peering(mask, NORTH))
+		data.set_terrain_peering_bit(TileSet.CELL_NEIGHBOR_RIGHT_SIDE, _peering(mask, EAST))
+		data.set_terrain_peering_bit(TileSet.CELL_NEIGHBOR_BOTTOM_SIDE, _peering(mask, SOUTH))
+		data.set_terrain_peering_bit(TileSet.CELL_NEIGHBOR_LEFT_SIDE, _peering(mask, WEST))
 	return set
+
+
+func _peering(mask: int, flag: int) -> int:
+	if (mask & flag) != 0:
+		return ROAD_TERRAIN
+	return -1
 
 
 func _paint_ground(image: Image, coords: Vector2i, base: Color, salt: int) -> void:

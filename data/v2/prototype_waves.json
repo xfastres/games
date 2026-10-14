@@ -1,0 +1,21 @@
+{
+  "id": "base.prototype_waves",
+  "schema_version": 1,
+  "waves": [
+    {
+      "enemy_id": "base.raider",
+      "count": 4,
+      "spawn_interval": 0.9
+    },
+    {
+      "enemy_id": "base.raider",
+      "count": 6,
+      "spawn_interval": 0.75
+    },
+    {
+      "enemy_id": "base.raider",
+      "count": 8,
+      "spawn_interval": 0.6
+    }
+  ]
+}

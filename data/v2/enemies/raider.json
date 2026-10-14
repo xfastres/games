@@ -1,0 +1,12 @@
+{
+  "id": "base.raider",
+  "schema_version": 1,
+  "name": "劫掠者",
+  "scene": "res://scenes/v2/enemy.tscn",
+  "sprite": "res://assets/sprites/characters/enemies/goblin.png",
+  "max_health": 30,
+  "move_speed": 70,
+  "contact_damage": 9,
+  "attack_interval": 0.75,
+  "gold_reward": 8
+}

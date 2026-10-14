@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "note": "V2 正式引用。原图仍在素材包和 assets/sprites，这里不复制像素。地形源图尺寸不一致，不能进入 TileSet。",
+  "entries": [
+    {"id": "building.castle", "path": "res://assets/sprites/buildings/castle.png", "role": "castle", "frames": 1},
+    {"id": "building.wall", "path": "res://assets/sprites/buildings/wooden_wall.png", "role": "blocker", "frames": 1},
+    {"id": "building.archer_tower", "path": "res://assets/sprites/buildings/archer_tower.png", "role": "ranged", "frames": 1},
+    {"id": "enemy.raider", "path": "res://assets/sprites/characters/enemies/goblin.png", "role": "enemy", "frames": 1, "missing_actions": ["idle", "walk", "attack", "hurt", "death"]},
+    {"id": "projectile.arrow", "path": "res://assets/sprites/projectiles/arrow_projectile.png", "role": "projectile", "frames": 1},
+    {"id": "ui.gold", "path": "res://assets/sprites/ui/icons/icon_gold.png", "role": "icon", "frames": 1},
+    {"id": "ui.health", "path": "res://assets/sprites/ui/icons/icon_health.png", "role": "icon", "frames": 1},
+    {"id": "ui.shield", "path": "res://assets/sprites/ui/icons/icon_shield.png", "role": "icon", "frames": 1}
+  ],
+  "rejected_terrain": [
+    "res://assets/sprites/terrain/grass_tile_01.png",
+    "res://assets/sprites/terrain/grass_tile_02.png",
+    "res://assets/sprites/terrain/grass_tile_03.png",
+    "res://assets/sprites/terrain/grass_tile_04.png"
+  ]
+}

@@ -2,7 +2,7 @@ class_name EnemyPresentation
 extends Node
 
 ## 移动状态只影响绘制。不保存生命、冷却或路径。
-## 当前敌人素材是单张静态图，这里不循环同一帧冒充动画。
+## goblin.png 是单帧，没有 SpriteFrames。不复制同一张图去冒充 AnimatedSprite2D。
 
 signal state_changed(next_state: String)
 

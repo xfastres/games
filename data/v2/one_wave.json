@@ -1,0 +1,11 @@
+{
+  "id": "base.v2_one_wave",
+  "schema_version": 1,
+  "waves": [
+    {
+      "enemy_id": "base.raider",
+      "count": 1,
+      "spawn_interval": 0.6
+    }
+  ]
+}

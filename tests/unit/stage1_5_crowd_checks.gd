@@ -15,6 +15,8 @@ func _run_tests() -> void:
 	await _test_hold_then_death()
 	await _test_wall_opens_for_group()
 	await _test_castle_cluster()
+	await _test_head_on_cross()
+	await _test_junction()
 	if _failures.is_empty():
 		print("STAGE15_CROWD_PASS")
 		quit(0)
@@ -200,6 +202,140 @@ func _test_castle_cluster() -> void:
 	_expect(moved == defense.alive_enemies, "some enemies never moved or arrived: %d/%d" % [moved, defense.alive_enemies])
 	_expect(int(sample.overlap_frames) == 0, "castle overlap %s min_gap %s" % [str(sample.overlap_frames), str(sample.min_gap)])
 	_close(defense)
+
+
+func _test_head_on_cross() -> void:
+	var defense := await _open("res://tests/fixtures/defense/crowd_cross.json")
+	if defense == null:
+		return
+	var left_ids := {}
+	var right_ids := {}
+	var cells: Array[Vector2i] = [
+		Vector2i(0, 0), Vector2i(1, 0), Vector2i(2, 0),
+		Vector2i(0, 1), Vector2i(1, 1), Vector2i(2, 1), Vector2i(3, 1),
+		Vector2i(0, 2), Vector2i(1, 2), Vector2i(2, 2),
+		Vector2i(11, 1),
+		Vector2i(12, 0), Vector2i(13, 0), Vector2i(14, 0),
+		Vector2i(12, 1), Vector2i(13, 1), Vector2i(14, 1),
+		Vector2i(12, 2), Vector2i(13, 2), Vector2i(14, 2),
+	]
+	for cell in cells:
+		var enemy := _spawn(defense, cell)
+		if enemy == null:
+			continue
+		if cell.x < 7:
+			left_ids[enemy.get_instance_id()] = true
+		else:
+			right_ids[enemy.get_instance_id()] = true
+	_expect(left_ids.size() == 10 and right_ids.size() == 10, "head-on spawned %d/%d" % [left_ids.size(), right_ids.size()])
+	var castle_before := defense.castle.health.current
+	var sample := await _simulate(defense, 900, func() -> bool:
+		return _side_arrived(defense, left_ids, true) >= 1 and _side_arrived(defense, right_ids, false) >= 1 and defense.castle.health.current < castle_before
+	)
+	var on_castle := 0
+	for enemy in _living(defense):
+		if enemy.current_cell == Vector2i(7, 1):
+			on_castle += 1
+	_report("head_on", defense, sample)
+	print("CROWD head_on_left %d head_on_right %d" % [_side_arrived(defense, left_ids, true), _side_arrived(defense, right_ids, false)])
+	_expect(_side_arrived(defense, left_ids, true) >= 1, "left side did not reach the castle")
+	_expect(_side_arrived(defense, right_ids, false) >= 1, "right side did not reach the castle")
+	_expect(defense.castle.health.current < castle_before, "head-on did not damage the castle")
+	_expect(on_castle == 0, "enemy entered the castle cell")
+	_expect(int(sample.overlap_frames) == 0, "head-on overlap %s min_gap %s" % [str(sample.overlap_frames), str(sample.min_gap)])
+	_expect(float(sample.min_gap) >= 30.0, "head-on min gap %s" % str(sample.min_gap))
+	_expect(int(sample.frames) < 900, "head-on did not meet inside the budget")
+	_close(defense)
+
+
+func _test_junction() -> void:
+	var defense := await _open("res://tests/fixtures/defense/crowd_junction.json")
+	if defense == null:
+		return
+	var open := {}
+	for x in defense.columns:
+		for y in [4, 5, 6]:
+			open[Vector2i(x, y)] = true
+	for y in defense.rows:
+		for x in [4, 5, 6]:
+			open[Vector2i(x, y)] = true
+	for y in defense.rows:
+		for x in defense.columns:
+			var cell := Vector2i(x, y)
+			if open.has(cell) or defense._blocked.has(cell):
+				continue
+			defense._blocked[cell] = true
+	defense._invalidate_routes()
+	var north_ids := {}
+	var east_ids := {}
+	var north_cells: Array[Vector2i] = [
+		Vector2i(4, 0), Vector2i(5, 0), Vector2i(6, 0),
+		Vector2i(4, 1), Vector2i(5, 1), Vector2i(6, 1),
+		Vector2i(4, 2), Vector2i(5, 2), Vector2i(6, 2),
+	]
+	var east_cells: Array[Vector2i] = [
+		Vector2i(9, 4), Vector2i(10, 4), Vector2i(11, 4),
+		Vector2i(9, 5), Vector2i(10, 5), Vector2i(11, 5),
+		Vector2i(9, 6), Vector2i(10, 6), Vector2i(11, 6),
+		Vector2i(8, 4), Vector2i(8, 6),
+	]
+	for cell in north_cells:
+		var enemy := _spawn(defense, cell)
+		if enemy != null:
+			north_ids[enemy.get_instance_id()] = true
+	for cell in east_cells:
+		var enemy := _spawn(defense, cell)
+		if enemy != null:
+			east_ids[enemy.get_instance_id()] = true
+	_expect(north_ids.size() == 9 and east_ids.size() == 11, "junction spawned %d/%d" % [north_ids.size(), east_ids.size()])
+	var sample := await _simulate(defense, 900, func() -> bool:
+		return _junction_north(defense, north_ids) >= 2 and _junction_east(defense, east_ids) >= 2 and _contact(defense) >= 1
+	)
+	var off_road := 0
+	for enemy in _living(defense):
+		if enemy.current_cell == Vector2i(0, 5) or not open.has(enemy.current_cell):
+			off_road += 1
+	_report("junction", defense, sample)
+	print("CROWD junction_north %d junction_east %d" % [_junction_north(defense, north_ids), _junction_east(defense, east_ids)])
+	_expect(_junction_north(defense, north_ids) >= 2, "north stream did not enter the crossing")
+	_expect(_junction_east(defense, east_ids) >= 2, "east stream did not pass the crossing")
+	_expect(_contact(defense) >= 1, "junction contact %d" % _contact(defense))
+	_expect(off_road == 0, "enemy left the open cross")
+	_expect(int(sample.overlap_frames) == 0, "junction overlap %s min_gap %s" % [str(sample.overlap_frames), str(sample.min_gap)])
+	_expect(float(sample.min_gap) >= 30.0, "junction min gap %s" % str(sample.min_gap))
+	_expect(int(sample.frames) < 900, "junction did not clear inside the budget")
+	_close(defense)
+
+
+func _junction_north(defense: DefenseMatch, ids: Dictionary) -> int:
+	var count := 0
+	for enemy in _living(defense):
+		if ids.has(enemy.get_instance_id()) and (enemy.current_cell.y >= 4 or enemy.reached_contact()):
+			count += 1
+	return count
+
+
+func _junction_east(defense: DefenseMatch, ids: Dictionary) -> int:
+	var count := 0
+	for enemy in _living(defense):
+		if ids.has(enemy.get_instance_id()) and (enemy.current_cell.x <= 6 or enemy.reached_contact()):
+			count += 1
+	return count
+
+
+func _side_arrived(defense: DefenseMatch, ids: Dictionary, from_left: bool) -> int:
+	var count := 0
+	for enemy in _living(defense):
+		if not ids.has(enemy.get_instance_id()):
+			continue
+		if enemy.reached_contact():
+			count += 1
+			continue
+		if from_left and enemy.current_cell.x >= 6:
+			count += 1
+		elif not from_left and enemy.current_cell.x <= 8:
+			count += 1
+	return count
 
 
 func _simulate(defense: DefenseMatch, budget: int, done: Callable) -> Dictionary:

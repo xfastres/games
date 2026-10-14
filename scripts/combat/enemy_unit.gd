@@ -18,7 +18,7 @@ const BOARD_METHODS: Array[String] = [
 	"world_to_cell",
 	"enemies_near",
 ]
-## 身体间距。小于这个距离就减速，避免叠在一起，但不是刚性占格。
+## 局部间距。全局路线由棋盘上的 AStarGrid2D 给出，这里不把别人写进固体格，也不用刚体互撞。
 const BODY_GAP := 48.0
 
 var definition: EnemyDefinition

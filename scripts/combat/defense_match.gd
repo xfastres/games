@@ -253,7 +253,7 @@ func route_epoch() -> int:
 func route_plan(cell: Vector2i) -> Dictionary:
 	if _route_cache.has(cell):
 		return _route_cache[cell]
-	var planned := GridRoute.plan(cell, _castle_cells, _blocked, columns, rows)
+	var planned := GridRoute.plan(cell, _castle_cells, _blocked, columns, rows, cell_size)
 	_route_cache[cell] = planned
 	return planned
 

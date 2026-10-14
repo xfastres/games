@@ -1,0 +1,18 @@
+{
+  "id": "base.wall",
+  "schema_version": 1,
+  "name": "城墙",
+  "description": "占据一格并阻挡敌人。敌人无法绕过时会攻击它。",
+  "scene": "res://scenes/v2/structure.tscn",
+  "icon": "res://assets/sprites/ui/icons/icon_shield.png",
+  "sprite": "res://assets/sprites/buildings/wooden_wall.png",
+  "cost": 10,
+  "footprint": {
+    "width": 1,
+    "height": 1
+  },
+  "behavior": {
+    "type": "blocker",
+    "max_health": 100
+  }
+}

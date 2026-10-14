@@ -1,0 +1,21 @@
+{
+  "id": "base.archer_tower",
+  "schema_version": 1,
+  "name": "弓箭塔",
+  "description": "自动攻击射程内的敌人。占据的格子同样会阻挡敌人。",
+  "scene": "res://scenes/v2/structure.tscn",
+  "sprite": "res://assets/sprites/buildings/archer_tower.png",
+  "cost": 50,
+  "footprint": {
+    "width": 1,
+    "height": 1
+  },
+  "behavior": {
+    "type": "ranged",
+    "max_health": 120,
+    "range": 240,
+    "attack_interval": 0.4,
+    "damage": 18,
+    "projectile_speed": 700
+  }
+}

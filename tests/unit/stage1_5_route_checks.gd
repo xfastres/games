@@ -15,6 +15,7 @@ func _run_tests() -> void:
 	_test_unreachable()
 	_test_enemies_are_not_static_obstacles()
 	await _test_wall_destroyed_replans()
+	await _test_two_spawns()
 	if _failures.is_empty():
 		print("STAGE15_ROUTE_PASS")
 		quit(0)
@@ -127,6 +128,36 @@ func _test_wall_destroyed_replans() -> void:
 	_expect(cleared.ok and cleared.length == open.length, "destroyed wall should restore length %s" % str(cleared.length))
 	_expect(defense.route_epoch() > epoch + 1, "destroying a wall should drop the path cache")
 	_expect(defense.blocker_at(Vector2i(4, 1)) == null, "wall should be gone")
+	defense.free()
+
+
+func _test_two_spawns() -> void:
+	var defense := DefenseMatch.new()
+	defense.match_path = "res://data/combat/prototype_match.json"
+	root.add_child(defense)
+	await process_frame
+	if not defense.ready_ok:
+		_fail("prototype did not start for spawn routes")
+		defense.free()
+		return
+	var north: Dictionary = defense.route_plan(Vector2i(15, 2))
+	var south: Dictionary = defense.route_plan(Vector2i(15, 5))
+	var north_again: Dictionary = defense.route_plan(Vector2i(15, 2))
+	_expect(north.ok and south.ok, "spawn route %s / %s" % [str(north.error), str(south.error)])
+	_expect(north.length == 14 and south.length == 14, "spawn lengths %s %s" % [str(north.length), str(south.length)])
+	_expect(north_again.length == north.length and north_again.path == north.path, "repeat spawn path changed")
+	_expect(north.terminal == "attack_castle" and south.terminal == "attack_castle", "spawn terminal")
+	_expect(_endpoint(north) == Vector2i(1, 2), "north should stop on the castle's north side, got %s" % str(_endpoint(north)))
+	_expect(_endpoint(south) == Vector2i(1, 5), "south should stop on the castle's south side, got %s" % str(_endpoint(south)))
+	var castle_cells := {
+		Vector2i(0, 3): true,
+		Vector2i(1, 3): true,
+		Vector2i(0, 4): true,
+		Vector2i(1, 4): true,
+	}
+	_expect(_legal(north, castle_cells, defense.columns, defense.rows), "north path entered the castle")
+	_expect(_legal(south, castle_cells, defense.columns, defense.rows), "south path entered the castle")
+	_expect(defense._blocked.size() == 4, "spawn planning wrote extra blocked cells")
 	defense.free()
 
 

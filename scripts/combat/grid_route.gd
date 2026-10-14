@@ -1,10 +1,8 @@
 class_name GridRoute
 extends RefCounted
 
-## 四方向移动，代价为 1。不走对角线，因此不存在切墙角。
-## 启发距离用曼哈顿距离。等长路径的取舍是稳定的：
-## 先选步数最少的目标，再选与起点横向更齐的目标，最后选更小的 y、x。
-## 父节点由广度优先搜索的首次到达决定，邻居顺序是东、西、南、北。
+## 四方向网格最短路。步数由 AStarGrid2D 计算，敌人不会被写进固体格。
+## 攻击城堡、攻击阻挡和无路时的错误仍由本文件决定。
 const DIRECTIONS: Array[Vector2i] = [
 	Vector2i(1, 0),
 	Vector2i(-1, 0),
@@ -32,12 +30,14 @@ static func choose(
 
 ## 返回从起点到城堡的最短可走路径。走不到时 ok 为 false，并带明确错误。
 ## path 只含可走格子，不含要攻击的墙或城堡。length 是步数，不是数组长度。
+## cell_size 只写入 AStarGrid2D 的格子像素配置。搜索使用格子编号，不使用世界坐标。
 static func plan(
 	start: Vector2i,
 	castle_cells: Array[Vector2i],
 	blocked: Dictionary,
 	columns: int,
-	rows: int
+	rows: int,
+	cell_size: int = 1
 ) -> Dictionary:
 	if not _inside(start, columns, rows):
 		return _fail("敌人位于地图外 (%d, %d)" % [start.x, start.y])
@@ -57,13 +57,13 @@ static func plan(
 				continue
 			goals[neighbor] = true
 	if not goals.is_empty():
-		var walk := _shortest(start, goals, blocked, castle, columns, rows, false)
+		var walk := _shortest(start, goals, blocked, castle, columns, rows, false, cell_size)
 		if not walk.is_empty():
 			if walk.size() == 1:
 				return _attack("attack_castle", start, start)
 			return _move(walk, "attack_castle", walk[walk.size() - 1])
 
-	var breach := _shortest(start, castle, blocked, {}, columns, rows, true)
+	var breach := _shortest(start, castle, blocked, {}, columns, rows, true, cell_size)
 	if breach.size() < 2:
 		return _fail("找不到通往城堡的路线 (%d, %d)" % [start.x, start.y])
 	var walkable: Array[Vector2i] = [breach[0]]
@@ -87,13 +87,14 @@ static func shortest_to(
 	goals: Dictionary,
 	blocked: Dictionary,
 	columns: int,
-	rows: int
+	rows: int,
+	cell_size: int = 1
 ) -> Dictionary:
 	if not _inside(start, columns, rows):
 		return _fail("敌人位于地图外 (%d, %d)" % [start.x, start.y])
 	if goals.is_empty():
 		return _fail("没有可到达的目标")
-	var path := _shortest(start, goals, blocked, {}, columns, rows, false)
+	var path := _shortest(start, goals, blocked, {}, columns, rows, false, cell_size)
 	if path.is_empty():
 		return _fail("找不到通往目标的路线 (%d, %d)" % [start.x, start.y])
 	if path.size() == 1:
@@ -108,70 +109,104 @@ static func _shortest(
 	impassable: Dictionary,
 	columns: int,
 	rows: int,
-	allow_blocked: bool
+	allow_blocked: bool,
+	cell_size: int
 ) -> Array[Vector2i]:
-	var dist := {start: 0}
-	var parent := {}
-	var queue: Array[Vector2i] = [start]
-	var head := 0
-	while head < queue.size():
-		var current: Vector2i = queue[head]
-		head += 1
-		for direction in DIRECTIONS:
-			var neighbor: Vector2i = current + direction
-			if dist.has(neighbor) or not _inside(neighbor, columns, rows):
-				continue
-			if impassable.has(neighbor):
-				continue
-			var entering_blocked := blocked.has(neighbor) and not goals.has(neighbor)
-			if entering_blocked and not allow_blocked:
-				continue
-			dist[neighbor] = int(dist[current]) + 1
-			parent[neighbor] = current
-			queue.append(neighbor)
-	var goal := _pick_goal(start, goals, dist)
-	if goal.x == -99999:
-		var empty: Array[Vector2i] = []
-		return empty
-	return _reconstruct(parent, goal)
-
-
-static func _pick_goal(start: Vector2i, goals: Dictionary, dist: Dictionary) -> Vector2i:
+	var grid := _make_grid(columns, rows, blocked, impassable, goals, allow_blocked, start, cell_size)
 	var found := false
 	var best := Vector2i(-99999, -99999)
+	var best_path: Array[Vector2i] = []
 	var best_dist := 999999
 	var best_row := 999999
 	for raw in goals.keys():
 		var goal := raw as Vector2i
-		if not dist.has(goal):
+		if goal == start:
+			var stayed: Array[Vector2i] = [start]
+			if _prefer_goal(true, 0, absi(goal.y - start.y), goal, best_dist, best_row, best):
+				found = true
+				best = goal
+				best_path = stayed
+				best_dist = 0
+				best_row = absi(goal.y - start.y)
 			continue
-		var steps := int(dist[goal])
+		if not grid.is_in_boundsv(goal) or grid.is_point_solid(goal):
+			continue
+		var id_path := grid.get_id_path(start, goal)
+		if id_path.is_empty():
+			continue
+		var path := _cells_from_ids(id_path)
+		var steps := path.size() - 1
 		var row_delta := absi(goal.y - start.y)
-		var better := false
-		if not found or steps < best_dist:
-			better = true
-		elif steps == best_dist and row_delta < best_row:
-			better = true
-		elif steps == best_dist and row_delta == best_row and (goal.y < best.y or (goal.y == best.y and goal.x < best.x)):
-			better = true
-		if better:
-			found = true
-			best = goal
-			best_dist = steps
-			best_row = row_delta
-	if not found:
-		return Vector2i(-99999, -99999)
-	return best
+		if not _prefer_goal(found, steps, row_delta, goal, best_dist, best_row, best):
+			continue
+		found = true
+		best = goal
+		best_path = path
+		best_dist = steps
+		best_row = row_delta
+	return best_path
 
 
-static func _reconstruct(parent: Dictionary, current: Vector2i) -> Array[Vector2i]:
-	var path: Array[Vector2i] = [current]
-	var guard := 0
-	while parent.has(current) and guard < 512:
-		current = parent[current]
-		path.append(current)
-		guard += 1
-	path.reverse()
+## 区域、格子像素和固体格都设在这一张网格上。调用方传入的 blocked 不会被修改。
+static func _make_grid(
+	columns: int,
+	rows: int,
+	blocked: Dictionary,
+	impassable: Dictionary,
+	goals: Dictionary,
+	allow_blocked: bool,
+	start: Vector2i,
+	cell_size: int
+) -> AStarGrid2D:
+	var grid := AStarGrid2D.new()
+	grid.region = Rect2i(0, 0, columns, rows)
+	var pixels := maxi(cell_size, 1)
+	grid.cell_size = Vector2(pixels, pixels)
+	grid.offset = Vector2.ZERO
+	grid.diagonal_mode = AStarGrid2D.DIAGONAL_MODE_NEVER
+	grid.default_compute_heuristic = AStarGrid2D.HEURISTIC_MANHATTAN
+	grid.default_estimate_heuristic = AStarGrid2D.HEURISTIC_MANHATTAN
+	grid.update()
+	for raw in blocked.keys():
+		var cell := raw as Vector2i
+		if not grid.is_in_boundsv(cell) or impassable.has(cell):
+			continue
+		if goals.has(cell) or allow_blocked:
+			continue
+		grid.set_point_solid(cell, true)
+	for raw in impassable.keys():
+		var cell := raw as Vector2i
+		if grid.is_in_boundsv(cell):
+			grid.set_point_solid(cell, true)
+	if grid.is_in_boundsv(start) and not impassable.has(start):
+		grid.set_point_solid(start, false)
+	return grid
+
+
+static func _prefer_goal(
+	found: bool,
+	steps: int,
+	row_delta: int,
+	goal: Vector2i,
+	best_dist: int,
+	best_row: int,
+	best: Vector2i
+) -> bool:
+	if not found or steps < best_dist:
+		return true
+	if steps == best_dist and row_delta < best_row:
+		return true
+	if steps == best_dist and row_delta == best_row and (goal.y < best.y or (goal.y == best.y and goal.x < best.x)):
+		return true
+	return false
+
+
+static func _cells_from_ids(id_path: PackedVector2Array) -> Array[Vector2i]:
+	var path: Array[Vector2i] = []
+	path.resize(id_path.size())
+	for index in id_path.size():
+		var point: Vector2 = id_path[index]
+		path[index] = Vector2i(int(point.x), int(point.y))
 	return path
 
 

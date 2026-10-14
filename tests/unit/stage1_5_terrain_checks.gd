@@ -12,6 +12,7 @@ func _run_tests() -> void:
 	_test_refresh_neighbors()
 	_test_ground_tiles_are_square()
 	_test_source_art_is_not_stitched()
+	_test_native_terrain_connect()
 	await _test_battle_map_keeps_logic()
 	if _failures.is_empty():
 		print("STAGE15_TERRAIN_PASS")
@@ -138,6 +139,51 @@ func _test_battle_map_keeps_logic() -> void:
 	_expect(plan_before.length == plan_after.length and plan_before.path == plan_after.path, "terrain texture changed the route")
 	_expect(plan_after.ok and int(plan_after.length) > 0, "spawn route missing")
 	defense.free()
+
+
+func _test_native_terrain_connect() -> void:
+	var straight := _blank(8, 6)
+	for x in range(1, 5):
+		straight.set_kind(Vector2i(x, 2), TerrainField.ROAD)
+	var straight_layer := _applied(straight)
+	_expect(straight_layer.get_cell_atlas_coords(Vector2i(2, 2)) == Vector2i(2, 2), "connected straight")
+	_expect(straight_layer.get_cell_atlas_coords(Vector2i(0, 0)).y == 0, "grass stayed off the road row")
+	straight_layer.free()
+
+	var vertical := _blank(6, 6)
+	for y in range(1, 5):
+		vertical.set_kind(Vector2i(3, y), TerrainField.ROAD)
+	var vertical_layer := _applied(vertical)
+	_expect(vertical_layer.get_cell_atlas_coords(Vector2i(3, 2)) == Vector2i(5, 1), "connected vertical")
+	vertical_layer.free()
+
+	var corner := _blank(6, 6)
+	corner.set_kind(Vector2i(2, 2), TerrainField.ROAD)
+	corner.set_kind(Vector2i(3, 2), TerrainField.ROAD)
+	corner.set_kind(Vector2i(2, 3), TerrainField.ROAD)
+	var corner_layer := _applied(corner)
+	_expect(corner_layer.get_cell_atlas_coords(Vector2i(2, 2)) == Vector2i(6, 1), "connected corner")
+	corner_layer.free()
+
+	var junction := _blank(6, 6)
+	for cell in [Vector2i(1, 2), Vector2i(2, 2), Vector2i(3, 2), Vector2i(2, 3)]:
+		junction.set_kind(cell, TerrainField.ROAD)
+	var tee_layer := _applied(junction)
+	_expect(tee_layer.get_cell_atlas_coords(Vector2i(2, 2)) == Vector2i(6, 2), "connected T")
+	tee_layer.free()
+
+	junction.set_kind(Vector2i(2, 1), TerrainField.ROAD)
+	var cross_layer := _applied(junction)
+	_expect(cross_layer.get_cell_atlas_coords(Vector2i(2, 2)) == Vector2i(7, 2), "connected cross")
+	_expect(cross_layer.get_cell_atlas_coords(Vector2i(0, 0)) == junction.atlas_coords(Vector2i(0, 0)), "cross paint changed grass")
+	cross_layer.free()
+
+
+func _applied(field: TerrainField) -> TileMapLayer:
+	var layer := TileMapLayer.new()
+	root.add_child(layer)
+	field.apply(layer)
+	return layer
 
 
 func _blank(columns: int, rows: int) -> TerrainField:

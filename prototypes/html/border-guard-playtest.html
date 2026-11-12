@@ -17,34 +17,32 @@ button.gold{background:var(--accent);border-color:var(--accent);color:var(--ink)
 button.gold:hover:not(:disabled){background:#f6cb87}
 button.quiet{background:transparent;color:#e2e3d1}
 [hidden]{display:none!important}
-.top,main{max-width:1760px;margin:auto;padding-inline:clamp(13px,2vw,32px)}
-.top{height:85px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #344437}
-.identity,.header-actions{display:flex;align-items:center;gap:12px}
-.crest{width:43px;height:46px;display:grid;place-items:center;background:#ad8551;clip-path:polygon(0 0,100% 0,100% 71%,50% 100%,0 71%)}
-.crest i{display:block;width:23px;height:24px;background:#252d23;clip-path:polygon(0 0,21% 0,21% 19%,39% 19%,39% 0,61% 0,61% 19%,79% 19%,79% 0,100% 0,100% 44%,87% 44%,87% 100%,61% 100%,61% 68%,39% 68%,39% 100%,13% 100%,13% 44%,0 44%)}
-h1,h2,p{margin:0}h1{font-family:"Songti SC","SimSun",Georgia,serif;font-size:28px;line-height:1.12;letter-spacing:.09em}h2{font-size:16px;line-height:1.35}
-.subtitle{color:var(--muted);font-size:12px;margin-top:3px}
-main{padding-top:17px;padding-bottom:30px}
-.status{border:1px solid var(--line);border-radius:var(--radius);background:#222e25;display:flex;justify-content:space-between;align-items:center;padding:10px 16px;margin-bottom:14px;gap:14px}
-.time{display:flex;gap:10px;align-items:center;white-space:nowrap}.time strong{display:block;font-size:16px}.time small{display:block;color:var(--muted);font-size:12px}.phase-icon{color:var(--accent);font-size:24px;width:35px;height:35px;display:grid;place-items:center;border:1px solid #65543a;border-radius:50%;line-height:1}
-.stocks{display:grid;grid-template-columns:repeat(4,minmax(65px,110px));gap:10px}.stock{border-left:1px solid var(--line);padding-left:12px;min-width:0}.stock span{display:block;color:var(--muted);font-size:12px;white-space:nowrap}.stock strong{display:block;font:700 20px/1.1 Georgia,serif;color:var(--text);font-variant-numeric:tabular-nums}.stock i{display:inline-block;width:8px;height:8px;margin-right:5px;border-radius:2px;background:var(--t)}
-.layout{display:grid;grid-template-columns:minmax(0,1fr) minmax(240px,290px);gap:14px;align-items:start}
-.field,.panel{border:1px solid var(--line);background:var(--paper);border-radius:var(--radius);min-width:0}
-.field{overflow:hidden}
-.field-heading{display:flex;justify-content:space-between;gap:10px;align-items:center;padding:12px 15px}.field-heading span,#actionCount{color:var(--muted);font-size:12px}#actionCount{color:var(--accent);text-align:right}
-.board{position:relative;background:#1a231d;border-block:1px solid #485645}canvas{display:block;width:100%;height:auto;aspect-ratio:8/5;touch-action:manipulation;cursor:crosshair}
-.legend{display:flex;gap:12px;align-items:center;flex-wrap:wrap;padding:8px 14px;color:var(--muted);font-size:12px}.legend i{width:9px;height:9px;border-radius:2px;display:inline-block;margin-right:3px}.legend .owned{background:#ad9b62}.legend .fog{background:#3a4943}.legend .hostile{background:#ad6858}#legendControl{margin-left:auto;color:#c8c7a9}
-.command-bar{border-top:1px solid var(--line);padding:10px 12px;display:flex;gap:7px;flex-wrap:wrap;min-height:59px;align-items:center}.command-bar button{padding:8px 10px}.command-bar button.active{border-color:var(--accent);color:#ffd78d;background:#3a3728}.command-bar small{font-size:11px;color:#c7c6a8;display:block;margin-top:2px}
-.side{display:grid;gap:10px}.panel{padding:14px 15px}.panel p{font-size:13px;color:var(--muted);margin-top:6px}.objective{border-top:2px solid #a08352}.objective h2{font-size:17px}.section-caption{color:#bac3ae;font-size:11px;letter-spacing:.11em;margin-bottom:6px}.inspect h3{font-size:15px;margin:0}.inspect .tile-actions{display:flex;gap:6px;flex-wrap:wrap;margin-top:9px}.inspect .tile-actions button{font-size:13px}.panel .info{color:var(--accent)}
-.march{display:grid;grid-template-columns:repeat(5,1fr);gap:5px;margin-top:13px}.march span{text-align:center;color:var(--muted);border:1px solid #465848;border-radius:5px;background:#253329;font-size:11px;padding:4px 0}.march span.current{border-color:#c39c5b;color:#f6cf87;background:#3c3829}.march span.done{color:#e5e8d5;background:#394b36}.march span.boss{color:#f1a78b}
-.primary-actions{display:grid;gap:7px;margin-top:11px}.primary-actions:empty{display:none}
-.reports ol{list-style:none;margin:7px 0 0;padding:0;font-size:12px;color:var(--muted);max-height:133px;overflow:auto}.reports li{border-top:1px solid #36453a;padding:5px 0}.reports li:first-child{color:#eee0bb}
-#battleHud{position:absolute;top:10px;left:10px;pointer-events:none;padding:7px 10px;background:#161c1de8;border:1px solid #806050;border-radius:6px;font-size:12px;color:#f2e6cd;box-shadow:0 2px 14px #10151055}.battle-dot{display:inline-block;width:8px;height:8px;background:#ef9275;margin-right:6px;border-radius:50%}
-#toast{position:fixed;bottom:16px;left:50%;transform:translateX(-50%);max-width:90vw;width:max-content;z-index:3;border:1px solid #97764c;background:#29352b;color:#ffe3ad;border-radius:8px;padding:9px 15px;box-shadow:0 5px 25px #0b120ca6}
+html,body{height:100%}
+body{min-height:100vh;overflow:hidden}
+h1,h2,p{margin:0}h1{font-family:"Songti SC","SimSun",Georgia,serif;font-size:18px;line-height:1.1;letter-spacing:.06em}h2{font-size:16px;line-height:1.35}
+.subtitle{color:var(--muted);font-size:11px;margin-top:2px}
+.stage{height:100vh;display:grid;grid-template-rows:auto minmax(0,1fr) auto;padding:8px 10px;gap:8px}
+.edge{display:flex;justify-content:space-between;align-items:flex-start;gap:8px;min-width:0}
+.chip{background:rgba(20,28,23,.55);border:1px solid rgba(58,74,61,.75);border-radius:10px;padding:6px 10px;max-width:100%}
+.time{display:flex;gap:8px;align-items:center;white-space:nowrap}.time strong{display:block;font-size:15px}.time small{display:block;color:var(--muted);font-size:12px}.phase-icon{color:var(--accent);font-size:20px;width:30px;height:30px;display:grid;place-items:center;border:1px solid #65543a;border-radius:50%;line-height:1}
+.stocks{display:flex;gap:10px}.stock{min-width:0}.stock span{display:block;color:var(--muted);font-size:11px;white-space:nowrap}.stock strong{display:block;font:700 18px/1.1 Georgia,serif;color:var(--text);font-variant-numeric:tabular-nums}.stock i{display:inline-block;width:8px;height:8px;margin-right:4px;border-radius:2px;background:var(--t)}
+#actionCount{color:var(--accent);font-size:12px}
+.map-frame{min-height:0;min-width:0;display:flex;align-items:center;justify-content:center}
+canvas{display:block;background:#1a231d;touch-action:manipulation;cursor:crosshair}
+.legend{display:flex;gap:10px;align-items:center;flex-wrap:wrap;color:var(--muted);font-size:12px}.legend i{width:9px;height:9px;border-radius:2px;display:inline-block;margin-right:3px}.legend .owned{background:#ad9b62}.legend .fog{background:#3a4943}.legend .hostile{background:#ad6858}#legendControl{color:#c8c7a9}
+.edge-bottom .chip{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.edge-bottom button{padding:6px 10px}
+.command-bar{padding:8px 0;display:flex;gap:7px;flex-wrap:wrap;align-items:center}.command-bar button{padding:8px 10px}.command-bar button.active{border-color:var(--accent);color:#ffd78d;background:#3a3728}.command-bar small{font-size:11px;color:#c7c6a8;display:block;margin-top:2px}
+.sheet{position:fixed;z-index:2;top:74px;right:12px;width:min(420px,calc(100vw - 24px));max-height:calc(100vh - 96px);overflow:auto;background:rgba(32,43,35,.94);border:1px solid var(--line);border-radius:var(--radius);padding:12px 14px;box-shadow:0 12px 40px #070d0bcc}
+.sheet-head{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:8px}
+.panel p{font-size:13px;color:var(--muted);margin-top:6px}.objective{border-top:2px solid #a08352;padding-top:8px}.objective h2{font-size:17px}.section-caption{color:#bac3ae;font-size:11px;letter-spacing:.11em;margin-bottom:6px}.inspect h3{font-size:15px;margin:0}.inspect .tile-actions{display:flex;gap:6px;flex-wrap:wrap;margin-top:9px}.inspect .tile-actions button{font-size:13px}.panel .info{color:var(--accent)}
+.march{display:grid;grid-template-columns:repeat(5,1fr);gap:5px;margin-top:10px}.march span{text-align:center;color:var(--muted);border:1px solid #465848;border-radius:5px;background:#253329;font-size:11px;padding:4px 0}.march span.current{border-color:#c39c5b;color:#f6cf87;background:#3c3829}.march span.done{color:#e5e8d5;background:#394b36}.march span.boss{color:#f1a78b}
+.primary-actions{display:grid;gap:7px;margin-top:10px}.primary-actions:empty{display:none}
+.reports ol{list-style:none;margin:7px 0 0;padding:0;font-size:12px;color:var(--muted);max-height:50vh;overflow:auto}.reports li{border-top:1px solid #36453a;padding:5px 0}.reports li:first-child{color:#eee0bb}
+#battleHud{margin-top:4px;font-size:12px;color:#f2e6cd}.battle-dot{display:inline-block;width:8px;height:8px;background:#ef9275;margin-right:6px;border-radius:50%}
+#toast{position:fixed;bottom:16px;left:50%;transform:translateX(-50%);max-width:90vw;width:max-content;z-index:4;border:1px solid #97764c;background:#29352b;color:#ffe3ad;border-radius:8px;padding:9px 15px;box-shadow:0 5px 25px #0b120ca6}
 dialog{width:min(470px,calc(100vw - 28px));max-height:90vh;overflow:auto;color:var(--text);background:#253228;border:1px solid #9e8151;border-radius:13px;padding:18px;box-shadow:0 18px 70px #070d0bbd}dialog::backdrop{background:#0d1611bf}dialog h2{font-size:21px;margin:0 0 9px}dialog p{margin:9px 0;color:#d0d3bf}dialog .dialog-top{float:right;margin-left:10px}dialog .choices{display:grid;gap:8px;margin-top:14px}dialog .choices button{text-align:left}dialog small{display:block;color:#d9cfac;margin-top:3px}
-@media(max-width:930px){.layout{grid-template-columns:minmax(0,1fr) 248px}.top{height:71px}.side{gap:8px}.panel{padding:10px 11px}}
-@media(max-width:720px){.layout{grid-template-columns:1fr}.side{grid-template-columns:1fr 1fr}.objective{grid-column:1/-1}.status{padding:8px;gap:4px}.stocks{grid-template-columns:repeat(4,minmax(35px,1fr));gap:4px}.stock{padding-left:5px}.stock span{font-size:10px}.stock strong{font-size:18px}.stock i{display:none}.time{gap:4px}.phase-icon{width:24px;height:24px;font-size:16px}.time strong{font-size:13px}.time small{font-size:10px}.header-actions{gap:4px}.header-actions button{font-size:12px;padding:7px}.crest{width:33px;height:36px}.crest i{scale:.8}h1{font-size:23px}.legend{padding:6px 9px;gap:6px}.legend span{font-size:10px}.command-bar{min-height:0;padding:7px}.command-bar button{font-size:12px}}
-@media(max-width:385px){.side{grid-template-columns:1fr}.objective{grid-column:auto}}
+@media(max-width:720px){h1{font-size:16px}.stocks{gap:6px}.stock strong{font-size:16px}.sheet{top:8px;right:8px;left:8px;width:auto}}
 
 #clockReadout{font-weight:800;color:#f4c982;font-variant-numeric:tabular-nums}
 .inspect-heading{display:flex;justify-content:space-between;align-items:center;gap:8px}
@@ -57,50 +55,57 @@ dialog{width:min(470px,calc(100vw - 28px));max-height:90vh;overflow:auto;color:v
 </style>
 </head>
 <body>
-<header class="top">
-  <div class="identity">
-    <div class="crest" aria-hidden="true"><i></i></div>
-    <div><h1>边境守卫</h1><div class="subtitle">玩法原型 v0.11 优化试玩 · 试玩数值：白天 35 秒，地图 32×20</div></div>
-  </div>
-  <div class="header-actions">
-    <button class="quiet" id="helpBtn">操作指南</button>
-    <button class="quiet" id="resetBtn">重新开局</button>
-  </div>
-</header>
-<main>
-  <div class="status">
-    <div class="time"><span id="phaseIcon" class="phase-icon">☼</span><div><strong id="phaseName">第 1 日 · 选址</strong><small id="clockReadout"></small><small id="deadline">第 5 夜迎战首领</small></div></div>
-    <div class="stocks" id="stocks"></div>
-  </div>
-  <div class="layout">
-    <section class="field" aria-label="领地图">
-      <div class="field-heading"><div><h2>边境地图</h2><span id="mapHint">选中地图上的城址查看起始圈</span></div><div id="actionCount"></div></div>
-      <div class="board" id="board">
-        <canvas id="map" width="1472" height="920" aria-label="边境地图。点击地面或用 WASD 移动，点击已探明资源查看。夜间空格攻击，面板开着也能攻击。" tabindex="0"></canvas>
+<div class="stage">
+  <div class="edge">
+    <div class="chip time" id="chipTime">
+      <span id="phaseIcon" class="phase-icon">☼</span>
+      <div>
+        <h1>边境守卫</h1>
+        <div class="subtitle">玩法原型 v0.11 优化试玩 · 试玩数值：白天 35 秒，地图 32×20</div>
+        <strong id="phaseName">第 1 日 · 选址</strong>
+        <small id="clockReadout"></small>
+        <small id="deadline">第 5 夜迎战首领</small>
+        <small id="actionCount"></small>
         <div id="battleHud" hidden><span class="battle-dot"></span><span id="battleText"></span></div>
       </div>
-      <div class="legend"><span><i class="owned"></i> 领地</span><span><i class="fog"></i> 未探索</span><span><i class="hostile"></i> 夜袭入口</span><span id="legendControl"></span></div>
-      <div id="commandBar" class="command-bar"></div>
-      <div id="campList" class="command-bar" hidden></div>
-    </section>
-    <aside class="side">
-      <section class="panel objective">
-        <h2 id="goalTitle">第一夜前建立城堡</h2>
-        <p id="goalText">两处候选城址的起始圈都能开发粮、木、石和低产金矿。选好后，城堡会留在原地直到本局结束。</p>
-        <div id="march" class="march" aria-label="战役进度"></div>
-        <div id="primary" class="primary-actions"></div>
-      </section>
-      <section class="panel inspect">
-        <div class="inspect-heading"><div class="section-caption">地点与管理</div><button class="quiet" id="closeInspector" hidden>关闭面板</button></div>
-        <div id="inspectBody"></div>
-      </section>
-      <section class="panel reports">
-        <h2>边境战报</h2>
-        <ol id="reports" aria-live="polite"></ol>
-      </section>
-    </aside>
+    </div>
+    <div class="chip stocks" id="stocks"></div>
   </div>
-</main>
+  <div class="map-frame" id="board">
+    <canvas id="map" width="1472" height="920" aria-label="边境地图。点击地面或用 WASD 移动，点击已探明资源查看。夜间空格攻击，面板开着也能攻击。" tabindex="0"></canvas>
+  </div>
+  <div class="edge edge-bottom">
+    <div class="chip">
+      <button type="button" id="openCommand">指挥</button>
+      <button type="button" id="openReports">战报</button>
+      <button class="quiet" id="helpBtn">操作指南</button>
+      <button class="quiet" id="resetBtn">重新开局</button>
+      <span class="legend"><span><i class="owned"></i> 领地</span><span><i class="fog"></i> 未探索</span><span><i class="hostile"></i> 夜袭入口</span><span id="legendControl"></span></span>
+      <span id="mapHint">点「指挥」选址或建造。点「战报」看记录。</span>
+    </div>
+  </div>
+</div>
+<aside id="commandSheet" class="sheet" hidden>
+  <div class="sheet-head"><h2>指挥</h2><button class="quiet" id="closeCommand" type="button">关闭面板</button></div>
+  <section class="panel objective">
+    <h2 id="goalTitle">第一夜前建立城堡</h2>
+    <p id="goalText">两处候选城址的起始圈都能开发粮、木、石和低产金矿。选好后，城堡会留在原地直到本局结束。</p>
+    <div id="march" class="march" aria-label="战役进度"></div>
+    <div id="primary" class="primary-actions"></div>
+  </section>
+  <div id="commandBar" class="command-bar"></div>
+  <div id="campList" class="command-bar" hidden></div>
+  <section class="panel inspect">
+    <div class="inspect-heading"><div class="section-caption">地点与管理</div><button class="quiet" id="closeInspector" hidden>关闭面板</button></div>
+    <div id="inspectBody"></div>
+  </section>
+</aside>
+<aside id="reportSheet" class="sheet" hidden>
+  <div class="sheet-head"><h2>边境战报</h2><button class="quiet" id="closeReports" type="button">关闭面板</button></div>
+  <section class="panel reports">
+    <ol id="reports" aria-live="polite"></ol>
+  </section>
+</aside>
 <dialog id="dialog">
   <form method="dialog" class="dialog-top"><button class="quiet" aria-label="关闭">关闭</button></form>
   <div id="dialogContent"></div>
@@ -709,9 +714,13 @@ function isAdjacent(t) {
 function openInspector(t){
   game.selected=at(t.x,t.y);game.panel=true;
   game.hero.goal=null;keys.clear();
+  $('commandSheet').hidden=false;
+  $('reportSheet').hidden=true;
 }
 function closeInspector(){
-  game.panel=false;keys.clear();sync();
+  game.panel=false;
+  $('commandSheet').hidden=true;
+  keys.clear();sync();
   canvas.focus({preventScroll:true});
 }
 function scoutAroundHero(){
@@ -939,7 +948,7 @@ function startNight(){
   game.waveKills=0;game.waveGold=0;game.effects=[];game.militiaCooldown=0;
   for(const front of game.fronts){game.carry[front.id]=0;calculateRoutes(front);}
   const target=game.castle?'敌军开始进攻城堡。':'尚未建城，敌军正在追击领主。';
-  const panelNote=game.panel?' 地点面板仍开着：不能点地图移动，空格或「领主攻击」仍然有效。':'';
+  const panelNote=blocksMove()?' 面板仍开着：不能点地图移动，空格或「领主攻击」仍然有效。':'';
   announce((game.isBoss?'首领现身。':'第 '+game.day+' 夜。')+target+(raid?campName(raid)+'也在遇袭。':'')+panelNote);
 }
 function spawnEnemy(front){
@@ -964,6 +973,25 @@ function damageEnemy(enemy,amount){
     game.effects.push({type:'spark',x:enemy.x,y:enemy.y,time:.32,max:.32,color:'#ffda84'});
   }
 }
+function blocksMove(){
+  const command=$('commandSheet'), reports=$('reportSheet');
+  return Boolean(game.panel||(command&&!command.hidden)||(reports&&!reports.hidden));
+}
+function hideSheets(){
+  $('commandSheet').hidden=true;
+  $('reportSheet').hidden=true;
+  if(game.panel)game.panel=false;
+  keys.clear();
+  sync();
+  canvas.focus({preventScroll:true});
+}
+function showSheet(name){
+  $('commandSheet').hidden=name!=='command';
+  $('reportSheet').hidden=name!=='report';
+  keys.clear();
+  sync();
+  canvas.focus({preventScroll:true});
+}
 function attack(){
   if(game.phase!=='night'||game.hero.hp<=0||game.hero.cooldown>0||$('dialog').open)return;
   const h=game.hero;
@@ -987,7 +1015,7 @@ function moveHero(dt){
   h.hit=Math.max(0,h.hit-dt);
   if(h.hp<=0||$('dialog').open)return;
   if(game.phase==='night'&&keys.has(' '))attack();
-  if(game.panel){h.moving=false;return;}
+  if(blocksMove()){h.moving=false;return;}
   const dx=Number(keys.has('d')||keys.has('arrowright'))-Number(keys.has('a')||keys.has('arrowleft'));
   const dy=Number(keys.has('s')||keys.has('arrowdown'))-Number(keys.has('w')||keys.has('arrowup'));
   const length=Math.hypot(dx,dy);
@@ -1486,6 +1514,9 @@ function renderCommands(){
     game.sites.forEach((site,index)=>bar.append(button('前往 '+(index?'B · ':'A · ')+SITE_NAMES[index],()=>{
       if(game.panel){toast('先关闭面板。');return;}
       setDestination(tileAt(site.x,site.y));
+      $('commandSheet').hidden=true;
+      $('reportSheet').hidden=true;
+      sync();
     })));
     return;
   }
@@ -1515,7 +1546,7 @@ function renderCommands(){
   }
   if(game.phase==='night'){
     bar.append(button('领主攻击',()=>{attack();canvas.focus({preventScroll:true});},{
-      gold:true,detail:game.panel?'面板开着也能攻击':'空格'
+      gold:true,detail:blocksMove()?'面板开着也能攻击':'空格'
     }));
     if(game.castle)bar.append(button('城堡急修',()=>repair(game.castle),{detail:'5 金币'}));
     bar.append(button('使用药剂',()=>{
@@ -1642,11 +1673,11 @@ function renderUI(){
   $('deadline').textContent=!active?'战役结束':game.scheduled?'已确认提前召唤':'第 5 夜迎战首领';
   $('actionCount').textContent=phase==='day'?'白天行动 '+game.actions+' / 7':night?'夜战进行中':'';
   const modes={camp:'选择远离正式领地的已探明陆地',claim:'选择与正式领地相邻的已探明陆地',tower:'选择可建箭塔的空地',wall:'选择可建城墙的空地'};
-  $('mapHint').textContent=game.panel?(game.phase==='night'
+  $('mapHint').textContent=blocksMove()?(game.phase==='night'
     ?'面板开着：不能点地图移动。先关闭面板再走。空格或「领主攻击」仍可攻击。'
-    :'关闭地点面板后才能移动。时钟照常运行。'):modes[game.mode]||
-    (active?'试玩数值：白天 '+DEMO.daySeconds+' 秒，移速 '+DEMO.walkSpeed+' 格/秒。点击地面移动，迷雾里的树、石、田垄是资源线索。':'');
-  $('legendControl').textContent=active?(night?(game.panel?'先关面板再移动 · 空格仍可攻击':'WASD / 点击移动 · 空格 / 按钮攻击'):'WASD / 点击地面移动'):'';
+    :'关闭面板后才能移动。时钟照常运行。'):modes[game.mode]||
+    (active?'试玩数值：白天 '+DEMO.daySeconds+' 秒，移速 '+DEMO.walkSpeed+' 格/秒。点「指挥」选址或建造。':'');
+  $('legendControl').textContent=active?(night?(blocksMove()?'先关面板再移动 · 空格仍可攻击':'WASD / 点击移动 · 空格 / 按钮攻击'):'WASD / 点击地面移动'):'';
   $('battleHud').hidden=!night;
   renderMarch();renderCommands();updateStocks();inspect();updateBattleHud();
   const primary=$('primary');primary.replaceChildren();
@@ -1697,6 +1728,9 @@ function updateBattleHud(){
 function mapClick(t){
   if(!['day','night'].includes(game.phase))return;
   if(game.panel){toast('请先关闭地点面板。');return;}
+  if(!$('commandSheet').hidden||!$('reportSheet').hidden){
+    if(!(game.phase==='day'&&game.mode)){toast('请先关闭面板再移动。');return;}
+  }
   if(game.phase==='day'&&game.mode){
     if(game.mode==='camp')createCamp(t);
     else if(game.mode==='claim')claim(t);
@@ -1712,6 +1746,8 @@ function newRun(){
   keys.clear();
   game=makeGame();
   scoutAroundHero();
+  $('commandSheet').hidden=true;
+  $('reportSheet').hidden=true;
   sync();
 }
 
@@ -1732,13 +1768,13 @@ canvas.addEventListener('click',event=>{
 window.addEventListener('keydown',event=>{
   const key=event.key.toLowerCase();
   if($('dialog').open)return;
-  if(key==='escape'&&game.panel){event.preventDefault();closeInspector();return;}
+  if(key==='escape'&&(game.panel||!$('commandSheet').hidden||!$('reportSheet').hidden)){event.preventDefault();hideSheets();return;}
   if(key==='escape'&&game.mode){game.mode=null;sync();return;}
   if(!['day','night'].includes(game.phase))return;
   if(key===' '&&game.phase==='night'&&!event.target.closest?.('button')){
     event.preventDefault();keys.add(key);return;
   }
-  if(game.panel)return;
+  if(blocksMove())return;
   if(['w','a','s','d','arrowup','arrowdown','arrowleft','arrowright'].includes(key)){
     event.preventDefault();keys.add(key);
   }
@@ -1746,13 +1782,17 @@ window.addEventListener('keydown',event=>{
 window.addEventListener('keyup',event=>{keys.delete(event.key.toLowerCase());});
 window.addEventListener('blur',()=>keys.clear());
 $('closeInspector').addEventListener('click',closeInspector);
+$('closeCommand').addEventListener('click',hideSheets);
+$('closeReports').addEventListener('click',hideSheets);
+$('openCommand').addEventListener('click',()=>showSheet('command'));
+$('openReports').addEventListener('click',()=>showSheet('report'));
 $('dialog').addEventListener('close',()=>keys.clear());
 $('resetBtn').addEventListener('click',()=>{
   if(game.phase==='won'||game.phase==='lost'){newRun();return;}
   dialog('重新开局',['当前领地会重置，新一局将重新生成资源位置和地图细节。'],[{label:'开始新一局',click:newRun}]);
 });
 $('helpBtn').addEventListener('click',()=>dialog('操作指南',[
-  '点击地面或用 WASD 移动。靠近会自动点亮地块，点击已点亮的城址、建筑和资源打开面板。打开面板后时钟继续走，关闭后再移动。',
+  '点「指挥」选址、建造和查看地点，点「战报」看记录。面板默认收起。打开后面板挡住点地和 WASD，夜里仍可用空格或「领主攻击」。',
   '正式领地沿相邻地块扩张。远处先找已探明的空地建营地，再从城堡培养居民并派驻。居民到岗会消耗金币和粮食。',
   '夜袭自动开始。夜里按空格或点「领主攻击」。地点面板开着时不能点地图移动，但攻击不受影响。遇袭营地可以白天撤人，人离开营地范围后才不再受失守影响。',
   '试玩数值：白天 '+DEMO.daySeconds+' 秒，走路 '+DEMO.walkSpeed+' 格/秒，地图 '+WIDTH+'×'+HEIGHT+'。袭击预告至少留 '+DEMO.raidReactSeconds+' 秒白天，来不及就改期。这些都还不是正式数值表。'
@@ -1771,6 +1811,19 @@ function frame(now){
   if(now-lastHud>150){updateBattleHud();lastHud=now;}
   requestAnimationFrame(frame);
 }
+function fitMap(){
+  const frame=$('board');
+  if(!frame)return;
+  const availW=frame.clientWidth, availH=frame.clientHeight;
+  if(!availW||!availH)return;
+  const ratio=WIDTH/HEIGHT;
+  let w=availW, h=w/ratio;
+  if(h>availH){h=availH;w=h*ratio;}
+  canvas.style.width=Math.max(1,Math.floor(w))+'px';
+  canvas.style.height=Math.max(1,Math.floor(h))+'px';
+}
+new ResizeObserver(()=>fitMap()).observe($('board'));
+fitMap();
 newRun();
 requestAnimationFrame(frame);
 window.FW={
